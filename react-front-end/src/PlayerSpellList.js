@@ -9,7 +9,6 @@ class PlayerSpellList extends Component {
             return(
                 <React.Fragment>
                     <Spell
-                        spellObj={this.props.userSpells}
                         id={spell.id}
                         name={spell.name}
                         description={spell.description}

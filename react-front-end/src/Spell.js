@@ -3,14 +3,15 @@ import './spellList.css'
 
 class Spell extends Component {
     render() {
+        const { name, description, power, limit } = this.props;
         return (
 
             <div className='spell'>
-                <h4>Spell name: {this.props.name}</h4>
-                <h4>Description: {this.props.description}</h4>
-                <h4>Power: {this.props.power}</h4>
-                <h4>Limit: {this.props.limit}</h4>
-                <button onClick={() => this.props.chooseSpell(this.props.name) }>
+                <h4>Spell name: {name}</h4>
+                <h4>Description: {description}</h4>
+                <h4>Power: {power}</h4>
+                <h4>Limit: {limit}</h4>
+                <button onClick={() => this.props.chooseSpell(name) }>
                         Select Spell
                 </button>
             </div>
