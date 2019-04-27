@@ -1,0 +1,12 @@
+.myChar {
+    height: 200px;
+    width: 200px;
+    float: right;
+    margin-top: 10%;
+    margin-right: 10%;
+}
+
+.health {
+    float: right;
+    margin-top: 30%;
+}

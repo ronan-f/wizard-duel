@@ -31,3 +31,15 @@
     transform: rotate(360deg);
   }
 }
+
+.castSpell {
+  height: 60px;
+  width: 150px;
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+  background-color: darkblue;
+  color: white;
+}

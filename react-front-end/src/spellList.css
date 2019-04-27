@@ -1,0 +1,12 @@
+.spell {
+    float: left;
+    margin: 2%;
+}
+
+.spellContainer {
+    border-style: solid;
+    height: 230px;
+    width: 550px;
+    float: left;
+    margin: 2%;
+}
