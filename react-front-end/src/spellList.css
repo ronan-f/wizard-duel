@@ -1,12 +1,9 @@
-.spell {
-    float: left;
-    margin: 2%;
+.spellsTable {
+    border: 1px solid black;
 }
 
-.spellContainer {
-    border-style: solid;
+#mainTable {
     height: 230px;
     width: 550px;
-    float: left;
-    margin: 2%;
+    border-collapse: collapse;
 }
