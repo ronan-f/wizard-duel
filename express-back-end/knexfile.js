@@ -1,36 +1,49 @@
-require('dotenv').config();
+// Update with your config settings.
 
 module.exports = {
 
   development: {
     client: 'pg',
     connection: {
-      database : "wizard_duel",
-      user     : "development",
-      password : "development",
-      hostname : 'localhost',
-      port     : 3000,
-      ssl      : true,
+      database: "wizard_duel",
+      user: "development",
+      password: "development",
+      hostname: "localhost",
+      port: 5432,
+      ssl: true
+    }
+  },
+
+  staging: {
+    client: 'postgresql',
+    connection: {
+      database: 'my_db',
+      user:     'username',
+      password: 'password'
+    },
+    pool: {
+      min: 2,
+      max: 10
     },
     migrations: {
-      directory: './db/migrations',
-      tableName: 'migrations',
-    },
-    seeds: {
-      directory: './db/seeds',
-    },
+      tableName: 'knex_migrations'
+    }
   },
 
   production: {
     client: 'postgresql',
-    connection: process.env.DATABASE_URL + '?ssl=true',
+    connection: {
+      database: 'my_db',
+      user:     'username',
+      password: 'password'
+    },
     pool: {
       min: 2,
-      max: 10,
+      max: 10
     },
     migrations: {
-      tableName: 'migrations',
-    },
-  },
+      tableName: 'knex_migrations'
+    }
+  }
 
 };
