@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Game from './Game.js';
+import Instructions from './Instructions';
+import Navigation from './Navigation.js';
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      message: 'Click the button to load data!'
-    }
-  }
 
+<<<<<<< HEAD
   fetchData = () => {
     axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
     .then((response) => {
@@ -22,9 +19,13 @@ class App extends Component {
       });
     })
   }
+=======
+>>>>>>> 37023f99cf47da26fcfab21e567a167ea4a0eb60
 
+class App extends Component {
   render() {
     return (
+<<<<<<< HEAD
       <div className="App">
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
@@ -32,7 +33,19 @@ class App extends Component {
         </button>
       </div>
     );
+=======
+      <BrowserRouter>
+        <div>
+          <Navigation />
+          <Route path='/' component={Game} exact />
+          <Route path='/instructions' component={Instructions}/>
+        </div>
+      </BrowserRouter>
+    )
+>>>>>>> 37023f99cf47da26fcfab21e567a167ea4a0eb60
   }
 }
+
+
 
 export default App;
