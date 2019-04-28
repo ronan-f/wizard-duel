@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  /* background-image: url('https://trello-attachments.s3.amazonaws.com/5cb38a347d90d388b0f7bfa0/5cc49deba6259179613076b6/96bf53e56578c2266f93703d03844625/AdobeStock_183342743.jpeg') */
 }
 
 .App-logo {
@@ -30,4 +31,25 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.castSpellBtn {
+  height: 60px;
+  width: 150px;
+  background-color: darkblue;
+  color: white;
+  font-size: 20px;
+}
+
+
+.infoBar {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 5%;
+}
+
+.characterSection {
+  margin: 5%;
+  display: flex;
+  justify-content: space-between;
 }

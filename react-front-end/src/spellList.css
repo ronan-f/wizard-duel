@@ -1,0 +1,17 @@
+.spellsTable {
+    border: 1px solid black;
+}
+
+#mainTable {
+    height: 230px;
+    width: 550px;
+    border-collapse: collapse;
+}
+
+.spellChoiceBtn {
+    height: 30px;
+    width: 75px;
+    background-color: darkblue;
+    color: white;
+    font-size: 20px;
+}
