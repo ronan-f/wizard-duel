@@ -1,0 +1,8 @@
+.navBar {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.link {
+    margin: 2.4%;
+}

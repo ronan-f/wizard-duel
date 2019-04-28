@@ -13,8 +13,8 @@ class Spell extends Component {
                     <td className='spellsTable'>{power}</td>
                     <td className='spellsTable'>{limit}</td>
                     <td>
-                        <button onClick={() => this.props.chooseSpell(name) }>
-                            Select Spell
+                        <button className='spellChoiceBtn' onClick={() => this.props.chooseSpell(name) }>
+                            Select
                         </button>
                     </td>
                 </tr>
