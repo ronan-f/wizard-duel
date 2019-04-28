@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Game from './Game.js';
 import Instructions from './Instructions';
 import Navigation from './Navigation.js';
+import Login from './Login.js';
 
 
 
@@ -13,7 +14,8 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Navigation />
-          <Route path='/' component={Game} exact />
+          <Route path='/' component={Login} exact />
+          <Route path='/game' component={Game} />
           <Route path='/instructions' component={Instructions}/>
         </div>
       </BrowserRouter>
