@@ -14,6 +14,7 @@ App.get('/api/data', (req, res) => {
     let draco = [query[1].name]
     res.json({
       message:`And then there was ${voldy} and ${draco}`
+      //message: query[0].name
     });
   }
   knex.select('*').from('characters')
