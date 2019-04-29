@@ -72,6 +72,13 @@ class Game extends Component {
           <button className='castSpellBtn' onClick={() => this.setState({notifications: notifications.concat(`Player 1 used ${currentSpell}`)})}>
               Cast Spell
           </button>
+
+          <div>
+            <h1>{ this.state.message }</h1>
+            <button onClick={this.fetchData} >
+              Fetch Data
+            </button>
+          </div>
         </div>
 
       );
