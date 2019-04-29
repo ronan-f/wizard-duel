@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
+import './instructions.css'
 
 
 class Instructions extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1>This is the about page. Instructions will go here.</h1>
+                <div class="speech-bubble">
+                    <p><strong>Welcome to Hogwarts!</strong></p>
+                    <p>To play, choose a character on the setup page. From there you'll have to spend your Mana wisely to come up with a spell and defence strategy. After your setup is complete you will be pitted against an opponent in a wizard duel to the death. Take turns casting spells until one of you emerges victorious. Good luck!</p>
+                </div>
+                <div className='dumbledoreSpeech'>
+                    <img src='https://i.ytimg.com/vi/X8rVAc5iAfk/hqdefault.jpg' alt='dumbledore'/>
+                </div>
             </React.Fragment>
         );
     }

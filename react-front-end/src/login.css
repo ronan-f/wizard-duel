@@ -1,0 +1,15 @@
+.loginForm {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.welcomeMessage{
+    text-align: center;
+    color: yellow;
+    font-size: 80px;
+}
+
+body {
+    background-image: url('https://trello-attachments.s3.amazonaws.com/5cb38a347d90d388b0f7bfa0/5cc49deba6259179613076b6/fba0dae04931b3d6ecd257e6530b9bab/gamestart.jpg')
+}

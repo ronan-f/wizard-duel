@@ -59,20 +59,20 @@ class Game extends Component {
       const { spells, notifications, myCharacter, opponentCharacter, currentSpell } =  this.state
       return (
         <div className="App">
-        <div className='infoBar'>
-          < PlayerSpellList chooseSpell={this.chooseSpell} userSpells={spells}/>
-          < NotificationBar notifications={notifications} />
-        </div>
+          <div className='infoBar'>
+            < PlayerSpellList chooseSpell={this.chooseSpell} userSpells={spells}/>
+            < NotificationBar notifications={notifications} />
+          </div>
 
-        <div className='characterSection'>
-          < OpponentCharacter characterInfo={opponentCharacter} />
-          < MyCharacter characterInfo={myCharacter} />
-        </div>
+          <div className='characterSection'>
+            < OpponentCharacter characterInfo={opponentCharacter} />
+            < MyCharacter characterInfo={myCharacter} />
+          </div>
 
-        <button className='castSpellBtn' onClick={() => this.setState({notifications: notifications.concat(`Player 1 used ${currentSpell}`)})}>
-            Cast Spell
-        </button>
-      </div>
+          <button className='castSpellBtn' onClick={() => this.setState({notifications: notifications.concat(`Player 1 used ${currentSpell}`)})}>
+              Cast Spell
+          </button>
+        </div>
 
       );
     }
