@@ -9,16 +9,16 @@ App.use(Express.static('public'));
 
 
 App.get('/api/data', (req, res) => {
-  let response = function(query) {
-    let voldy = [query[0].name]
-    let draco = [query[1].name]
+  let response = function(characters) {
+    let wizards = {wizards:characters}
+    console.log("THESE WIZZES YO", wizards)
     res.json({
       message:`And then there was ${voldy} and ${draco}`
       //message: query[0].name
     });
   }
   knex.select('*').from('characters')
-  .then(data => response(data));
+  .then(characters => response(characters));
 });
 
 App.listen(PORT, () => {
