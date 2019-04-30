@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: lightgray;
 }
 
 .App-logo {
@@ -30,4 +31,25 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.castSpellBtn {
+  height: 60px;
+  width: 150px;
+  background-color: darkblue;
+  color: white;
+  font-size: 20px;
+}
+
+
+.infoBar {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 5%;
+}
+
+.characterSection {
+  margin: 5%;
+  display: flex;
+  justify-content: space-between;
 }

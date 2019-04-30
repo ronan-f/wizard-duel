@@ -1,0 +1,13 @@
+.characterContainer{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.textInfo {
+    color: white;
+}
+
+.charBtn {
+    display: flex;
+    justify-content: space-evenly;
+}

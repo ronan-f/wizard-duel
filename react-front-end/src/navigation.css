@@ -1,0 +1,15 @@
+.navBar {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 30px;
+    color: white;
+    font-weight: 700;
+}
+
+.link {
+    margin: 2.4%;
+}
+
+.header {
+    width: 500px;
+}
