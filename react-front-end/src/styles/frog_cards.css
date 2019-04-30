@@ -1,9 +1,33 @@
-.myChar {
-  height: 400px;
-  width: 400px;
+.playerDiv{
+  background-size:cover;
+  height: 700px;
+  width: 700px;
+  background-image: norepeat url(/frog_card_template.png);
+}
+.opponentDiv{
+  background-size:cover;
+  height: 700px;
+  width: 700px;
+  background-image: norepeat url(/frog_card_template.png);
 }
 
+.myChar {
+  height: 200px;
+  width: 200px;
+}
+
+.playerFrog {
+  height: 700px;
+  width: 700px;
+}
+
+.opponentFrog {
+  height: 700px;
+  width: 700px;
+}
+
+
 .opponentChar {
-  height: 400px;
-  width: 400px;
+  height: 200px;
+  width: 200px;
 }
