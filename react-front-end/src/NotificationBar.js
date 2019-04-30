@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './notificationBar.css';
+import './styles/notificationBar.css';
+
 import Notification from "./Notifcation.js";
 
 

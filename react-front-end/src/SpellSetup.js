@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Spell from "./Spell.js";
-import './spellList.css'
-import './SpellSetup.css'
+import './styles/spellList.css'
+import './styles/SpellSetup.css'
 import { NavLink } from 'react-router-dom'
 
 

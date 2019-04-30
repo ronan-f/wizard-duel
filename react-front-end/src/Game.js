@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './styles/App.css';
 import PlayerSpellList from "./PlayerSpellList.js";
 import NotificationBar from "./NotificationBar.js";
 import MyCharacter from './MyCharacter.js'
@@ -13,6 +13,8 @@ class Game extends Component {
       super(props)
       this.chooseSpell = this.chooseSpell.bind(this);
       this.state = {
+        wizards: [],
+        dbSpells: [],
         currentSpell: '',
         spells:
         [
@@ -43,14 +45,22 @@ class Game extends Component {
     }
 
     fetchData = () => {
-      axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
+      axios.get('/api/spells') // You can simply make your requests to "/api/whatever you want"
       .then((response) => {
         // handle success
         console.log(response.data) // The entire response from the Rails API
-
-        console.log(response.data.message) // Just the message
         this.setState({
-          message: response.data.message
+          message: response.data.message,
+          dbSpells: response.data.spells
+        });
+      })
+      axios.get('/api/wizards') // You can simply make your requests to "/api/whatever you want"
+      .then((response) => {
+        // handle success
+        console.log(response.data) // The entire response from the Rails API
+        this.setState({
+          message: response.data.message,
+          wizards: response.data.wizards
         });
       })
     }

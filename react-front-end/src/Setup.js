@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import OpponentCharacter from './OpponentCharacter.js'
-import './setup.css'
+import './styles/setup.css'
+
 
 
 class Setup extends Component {
