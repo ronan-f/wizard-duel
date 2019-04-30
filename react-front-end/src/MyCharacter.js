@@ -6,7 +6,7 @@ class MyCharacter extends Component {
         const { characterInfo } = this.props
         return(
             <div>
-                <img className='myChar' src={characterInfo.image} alt='my character'/>
+                <img className='myChar' src='https://files.slack.com/files-pri/T2G8TE2E5-FJAHFNRL0/right_bellatrix.gif' alt='my character'/>
                 <h4 className='health'>My Defence: {characterInfo.health}</h4>
             </div>
         )

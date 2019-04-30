@@ -5,7 +5,7 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <h2 className='welcomeMessage'>Enter your name to begin...</h2>
+                <h2 className='welcomeMessage'>PROPS {this.props.test}</h2>
                 <form className='loginForm'>
                     <label>
                         Name:
@@ -13,9 +13,7 @@ class Login extends Component {
                     </label>
                     <input type="submit" value="Alohomora" />
                 </form>
-
             </div>
-
         );
     }
 }

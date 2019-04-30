@@ -11,22 +11,23 @@ import SpellSetup from './SpellSetup';
 
 
 class App extends Component {
+
   render() {
+    const test = ' HELLO WORLD'
     return (
       <BrowserRouter>
         <div>
           <Navigation />
-          <Route path='/' component={Login} exact />
+          <Route path='/'render={(props) => <Login {...props} test={test}/>}/>
           <Route path='/game' component={Game} />
           <Route path='/instructions' component={Instructions}/>
           <Route path='/setup' component={Setup}/>
           <Route path='/spell_setup' component={SpellSetup}/>
-
         </div>
       </BrowserRouter>
     )
   }
-}
+} 
 
 
 
