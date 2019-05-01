@@ -7,7 +7,7 @@ class Setup extends Component {
     render() {
         return (
             <React.Fragment>
-                <h1 className='textInfo'>Pick your character to get started</h1>
+                <h1 className='textInfo'> {this.props.state.currentUser} your character to get started</h1>
                 <div className='characterContainer'>
                     <OpponentCharacter/>
                     <OpponentCharacter/>
