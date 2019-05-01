@@ -39,7 +39,7 @@ class SpellSetup extends Component {
         });
 
         return <div className='main'>
-                    <h3>Pick you spells!</h3>
+                    <h3>Arm Yourself!</h3>
                     <table className='spellsTable' id='mainTable'>
                     <thead className='spellsTable'>
                         <tr>

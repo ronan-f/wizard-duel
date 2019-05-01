@@ -8,7 +8,7 @@ class MyCharacter extends Component {
         return(
             <div className='characterSelection'>
                 <div className='playerDiv'>
-                    <img className='myChar' src='/character_gifs/left_view/luna.gif' alt='my character'/>
+                    <img className='myChar' src='/character_gifs/left_view/ron.gif' alt='my character'/>
                     <h4 className='health'>My Defence: {characterInfo.health}</h4>
                 </div>
             </div>
