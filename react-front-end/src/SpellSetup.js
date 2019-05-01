@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Spell from "./Spell.js";
-import './spellList.css'
-import './SpellSetup.css'
+import './styles/spellList.css'
+import './styles/SpellSetup.css'
 import { NavLink } from 'react-router-dom'
 
 
@@ -38,9 +38,10 @@ class SpellSetup extends Component {
             );
         });
 
-        return <div className='main'>
-                    <h3>Pick you spells!</h3>
-                    <table className='spellsTable' id='mainTable'>
+        return <div className='spellSetup'>
+                    <h3>Arm Yourself!</h3>
+                    <container>
+                    <table className='spellsTable' id='spellsList'>
                     <thead className='spellsTable'>
                         <tr>
                             <th className='spellsTable'>Spell</th>
@@ -49,14 +50,28 @@ class SpellSetup extends Component {
                             <th className='spellsTable'>Casts</th>
                             <th className='spellsTable'>Choose spell</th>
                         </tr>
+                    </thead>
+                    </table>
+                    </container>
+                    <container>
+                    <table className='purchasedSpells'>
+                    <thead className='purchasedSpells'>
+                        <tr>
+                            <th className='purchasedSpells'>Spell</th>
+                            <th className='purchasedSpells'>Description</th>
+                            <th className='purchasedSpells'>Value</th>
+                            <th className='purchasedSpells'>Casts</th>
+                            <th className='purchasedSpells'>Choose spell</th>
+                        </tr>
 
                     </thead>
                     <tbody>
                         {spellArray}
                     </tbody>
                 </table>
+                </container>
 
-                <NavLink to='/game' className='link'>Start Game!</NavLink>
+                <NavLink to='/game' id='START'>Start Game!</NavLink>
 
         </div>
 
