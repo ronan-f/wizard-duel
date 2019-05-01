@@ -7,8 +7,7 @@ import Navigation from './Navigation.js';
 import Login from './Login.js';
 import Setup from './Setup.js';
 import SpellSetup from './SpellSetup';
-
-
+import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
@@ -35,7 +34,9 @@ class App extends Component {
       ],
       notifications: ['New player has joined', 'Player 1, your turn!'],
       myCharacter: {name: 'Dumbledore', image: 'https://vignette.wikia.nocookie.net/harrypotter/images/2/2f/101-albus_dumbledore.gif/revision/latest/scale-to-width-down/180?cb=20120622181924', health: 10},
-      opponentCharacter: {name: 'Ron', image:'https://vignette.wikia.nocookie.net/harrypotter/images/2/2f/101-albus_dumbledore.gif/revision/latest/scale-to-width-down/180?cb=20120622181924' }
+      opponentCharacter: {name: 'Ron', image:'https://vignette.wikia.nocookie.net/harrypotter/images/2/2f/101-albus_dumbledore.gif/revision/latest/scale-to-width-down/180?cb=20120622181924' },
+
+      wizards: null
 
     }
   }
@@ -52,12 +53,33 @@ class App extends Component {
     this.setState({currentUser: user})
   }
 
+  fetchData = () => {
+    axios.get('/api/spells') // You can simply make your requests to "/api/whatever you want"
+    .then((response) => {
+      // handle success
+      console.log(response.data) // The entire response from the Rails API
+      this.setState({
+        message: response.data.message,
+        spells: response.data.spells
+      });
+    })
+    axios.get('/api/wizards') // You can simply make your requests to "/api/whatever you want"
+    .then((response) => {
+      // handle success
+      console.log(response.data) // The entire response from the Rails API
+      this.setState({
+        message: response.data.message,
+        wizards: response.data.wizards
+      });
+    })
+  }
+
   render() {
     return (
       <BrowserRouter>
         <div>
           <Navigation />
-          <Route exact path='/'render={(props) => <Login {...props} newUser={this.newUser} state={this.state}/>}/>
+          <Route exact path='/'render={(props) => <Login {...props} newUser={this.newUser} state={this.state} loadDb={this.fetchData}/>} />
           <Route path='/game'render={(props) => <Game {...props} chooseSpell={this.chooseSpell} newNotification={this.newNotification} state={this.state}/>}/>
           <Route path='/instructions' component={Instructions}/>
           <Route path='/setup' component={Setup}/>

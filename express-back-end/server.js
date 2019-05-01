@@ -13,13 +13,8 @@ App.get('/api/wizards', (req, res) => {
     let wizards = {wizards:characters}
     console.log("THE WIZARDS:", wizards)
     res.json({
-<<<<<<< HEAD
-      message:`We have a query`, wizards
-      //message: query[0].name
-=======
       message:`Coming back from the server with the wizards ${wizards}`,
       wizards
->>>>>>> 9224acd1c630c7e8ca476b0a0ea0e72c4f1da06c
     });
   }
   knex.select('*').from('characters')

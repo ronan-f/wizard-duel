@@ -12,6 +12,7 @@ class Login extends Component {
     }
     handleSubmit = (event) => {
         event.preventDefault();
+        this.props.loadDb();
         this.props.newUser(this.state.user)
         this.setState({redirect: true});
     }
