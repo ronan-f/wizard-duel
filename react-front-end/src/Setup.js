@@ -36,10 +36,12 @@ class Setup extends Component {
                     <div className='left'>
                     <p className='leftCharacter'>Dumbledore's Army</p>
                     <OpponentCharacter charImg={this.lightWizardObj.right_image}/>
+                    <h1>{this.lightWizardObj.name}</h1>
                     </div>
                     <div className='right'>
                     <p>Death Eater</p>
                     <OpponentCharacter charImg={this.darkWizardObj.right_image}/>
+                    <h1>{this.darkWizardObj.name}</h1>
                     </div>
                 </div>
                 <div  className='charBtn'>
