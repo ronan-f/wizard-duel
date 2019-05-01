@@ -13,7 +13,7 @@ App.get('/api/data', (req, res) => {
     let wizards = {wizards:characters}
     console.log("THESE WIZZES YO", wizards)
     res.json({
-      message:`And then there was ${voldy} and ${draco}`
+      message:`We have a query`, wizards
       //message: query[0].name
     });
   }
