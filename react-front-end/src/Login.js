@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import './styles/login.css'
-import Setup from './Setup.js';
+// import Setup from './Setup.js';
+import { Redirect } from 'react-router'
 
 class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            user: '',
-            redirect: false
+            user: ''
         }
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.loadDb();
         this.props.newUser(this.state.user)
-        this.setState({redirect: true});
+        // this.props.loadDb();
     }
     render() {
         return (
-        this.state.redirect ? <Setup state={this.props.state}/> :
+        this.props.state.currentUser ? (<Redirect to="/setup"/>) :
             <div>
                 <form className='loginForm' onSubmit={this.handleSubmit.bind(this)}>
                     <label>

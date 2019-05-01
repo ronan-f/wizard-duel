@@ -15,29 +15,11 @@ class App extends Component {
     this.state = {
       currentUser: '',
       currentSpell: '',
-      spells:
-      [
-        {
-          id: 1,
-          name: 'Expelliarmus',
-          description: 'Blast your opponent',
-          power: 5,
-          limit: 3
-        },
-        {
-          id: 2,
-          name: 'avadakadabra',
-          description: 'kills opponent',
-          power: 10,
-          limit: 1
-        }
-      ],
+      spells: null,
       notifications: ['New player has joined', 'Player 1, your turn!'],
-      myCharacter: {name: 'Dumbledore', image: 'https://vignette.wikia.nocookie.net/harrypotter/images/2/2f/101-albus_dumbledore.gif/revision/latest/scale-to-width-down/180?cb=20120622181924', health: 10},
-      opponentCharacter: {name: 'Ron', image:'https://vignette.wikia.nocookie.net/harrypotter/images/2/2f/101-albus_dumbledore.gif/revision/latest/scale-to-width-down/180?cb=20120622181924' },
-
+      myCharacter: null,
+      opponentCharacter: null,
       wizards: null
-
     }
   }
 
@@ -50,28 +32,24 @@ class App extends Component {
   }
 
   newUser = (user) => {
-    this.setState({currentUser: user})
+    this.fetchData()
+    .then(([{ data: { wizards: { wizards } } }, { data: { spells: { spells } } }]) => {
+      this.setState({
+        wizards, spells, currentUser: user
+      })
+    }).catch(console.error)
+  }
+
+  fetchSpells() {
+    return axios.get('/api/spells')
+  }
+
+  fetchWizards() {
+    return axios.get('/api/wizards')
   }
 
   fetchData = () => {
-    axios.get('/api/spells') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
-      this.setState({
-        message: response.data.message,
-        spells: response.data.spells
-      });
-    })
-    axios.get('/api/wizards') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
-      this.setState({
-        message: response.data.message,
-        wizards: response.data.wizards
-      });
-    })
+    return Promise.all([this.fetchWizards(), this.fetchSpells()]);
   }
 
   render() {
@@ -82,7 +60,7 @@ class App extends Component {
           <Route exact path='/'render={(props) => <Login {...props} newUser={this.newUser} state={this.state} loadDb={this.fetchData}/>} />
           <Route path='/game'render={(props) => <Game {...props} chooseSpell={this.chooseSpell} newNotification={this.newNotification} state={this.state}/>}/>
           <Route path='/instructions' component={Instructions}/>
-          <Route path='/setup' component={Setup}/>
+          <Route path='/setup'render={(props) => <Setup {...props} state={this.state}/>}/>
           <Route path='/spell_setup' component={SpellSetup}/>
         </div>
       </BrowserRouter>
