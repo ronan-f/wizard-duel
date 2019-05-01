@@ -4,34 +4,10 @@ import PlayerSpellList from "./PlayerSpellList.js";
 import NotificationBar from "./NotificationBar.js";
 import MyCharacter from './MyCharacter.js'
 import OpponentCharacter from './OpponentCharacter.js';
-import axios from 'axios';
-
-
 
 class Game extends Component {
-    fetchData = () => {
-      axios.get('/api/spells') // You can simply make your requests to "/api/whatever you want"
-      .then((response) => {
-        // handle success
-        console.log(response.data) // The entire response from the Rails API
-        this.setState({
-          message: response.data.message,
-          dbSpells: response.data.spells
-        });
-      })
-      axios.get('/api/wizards') // You can simply make your requests to "/api/whatever you want"
-      .then((response) => {
-        // handle success
-        console.log(response.data) // The entire response from the Rails API
-        this.setState({
-          message: response.data.message,
-          wizards: response.data.wizards
-        });
-      })
-    }
-
     render() {
-      console.log(this.props.state)
+      console.log('current state', this.props.state)
       const { spells, notifications, myCharacter, opponentCharacter } =  this.props.state
       return (
         <div className="App">

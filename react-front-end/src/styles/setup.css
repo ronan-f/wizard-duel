@@ -16,6 +16,15 @@
     transform: scaleX(-1);
 }
 
-p{
+.leftCharacter{
     background:white;
+    transform: scaleX(-1);
+}
+
+p{
+    background: white;
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+    padding: 10px;
 }

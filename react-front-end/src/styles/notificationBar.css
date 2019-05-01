@@ -1,6 +1,7 @@
 .notificationBar {
-    height: 10%;
+    height: 300px;
     width: 45%;
     border-style: solid;
     background:white;
+    overflow: scroll;
 }

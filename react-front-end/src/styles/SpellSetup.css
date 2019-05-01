@@ -1,8 +1,66 @@
 .spellSetup {
     height: 50vmin;
-    width: 45vmin;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    color: 		black;
+    font-weight: bold;
 }
 
-#spellsList{
-    background:pink;
+h1 {
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.spells {
+    width: 100%;
+    margin: 0 5% 0 5%;
+    display: flex;
+    border: 3px green solid;
+}
+
+.wizard-info {
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2 {
+    width: 100%;
+}
+
+.spell-selection {
+    width: 60%;
+    height: 50%;
+    margin-right: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    border: 3px red solid;
+    background:white;
+    opacity: .5;
+}
+
+.purchased-spells {
+    width: 25%;
+    background:white;
+    border: 3px red solid;
+    opacity: .5;
+}
+
+.dot {
+    height: 40px;
+    width: 40px;
+    background-color: green;
+    border-radius: 50%;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#start {
+    background: white;
 }

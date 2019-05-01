@@ -8,7 +8,7 @@ class OpponentCharacter extends Component {
         return(
             <div className='characterSelection'>
             <div className='opponentDiv'>
-                <img className='myChar' src='/character_gifs/right_view/voldemort.gif' alt='my character'/>
+                <img className='myChar' src={this.props.charImg} alt='my character'/>
             </div>
         </div>
         )

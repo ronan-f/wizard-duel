@@ -9,7 +9,7 @@ class Navigation extends Component {
             <div className='navBar'>
                 <NavLink exact to='/' className='link'>Login</NavLink>
                 <NavLink to='/instructions' className='link'>Instructions</NavLink>
-                <img className='header' src='https://fontmeme.com/temporary/c34cfe1ad15a3705f4278ca1adce79f1.png' alt='header'/>
+                <img className='header' src="https://fontmeme.com/permalink/190501/0ec3ff4a20fe42010a0123f38bc873e7.png" alt='header' />
                 <NavLink to='/setup' className='link'>Setup</NavLink>
                 <NavLink to='/spell_setup' className='link'>Spell Setup</NavLink>
             </div>
