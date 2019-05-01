@@ -12,13 +12,13 @@ class Login extends Component {
         }
     }
     componentDidMount(){
-        this.socket = socketIOClient('http://localhost:8080/');
+        this.socket = socketIOClient('http://localhost:5000/');
+        this.socket.emit('chat message', 'I joined the socket server')
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.newUser(this.state.user)
-        // this.props.loadDb();
     }
     render() {
         return (
