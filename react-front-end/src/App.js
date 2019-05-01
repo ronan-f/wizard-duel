@@ -8,8 +8,6 @@ import Login from './Login.js';
 import Setup from './Setup.js';
 import SpellSetup from './SpellSetup';
 import axios from 'axios';
-import { Redirect } from 'react-router'
-
 
 class App extends Component {
   constructor(props) {
