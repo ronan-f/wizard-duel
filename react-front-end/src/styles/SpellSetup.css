@@ -1,0 +1,8 @@
+.spellSetup {
+    height: 50vmin;
+    width: 45vmin;
+}
+
+#spellsList{
+    background:pink;
+}

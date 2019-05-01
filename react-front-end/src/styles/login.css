@@ -1,10 +1,12 @@
 .loginForm {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     color: white;
 }
 
 .welcomeMessage{
+    flex-wrap: wrap;
     text-align: center;
     color: yellow;
     font-size: 80px;
