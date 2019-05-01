@@ -2,21 +2,24 @@ import React, { Component } from 'react';
 import Spell from "./Spell.js";
 import './styles/spellList.css';
 import './styles/SpellSetup.css';
+import './styles/radio_button.css';
 import { NavLink } from 'react-router-dom';
 
 class SpellSetup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            playerPosition: 1
+            playerPosition: 2
         }
     }
     // choosePosition = (positionNumber) => {
     //     this.setState({ playerPosition: positionNumber });
     // }
-    sayPosition = (e) => {
-        console.log(e.target.value);
-        // console.log('Button was clicked')
+    choosePosition = (e) => {
+        let numberified = Number(e.target.value);
+        this.setState({ playerPosition: numberified }, () => {
+            console.log(this.state.playerPosition);
+        });
     }
     render() {
         const spellsArr =[
@@ -86,10 +89,24 @@ class SpellSetup extends Component {
                 <div>
                     <h3>Choose your wizard's position</h3>
                 </div>
-                <div>
-                    <button value="Position 1" onClick={this.sayPosition}>Position: 1</button>
-                    <button value="Position 2" onClick={this.sayPosition}>Position: 2</button>
-                    <button value="Position 3" onClick={this.sayPosition}>Position: 3</button>
+                <div className="radio-pillbox">
+                    <radiogroup>
+                        <div>
+                            <input value="1" type="radio" name="radio-group" id="test" onClick={this.choosePosition}>
+                            </input>
+                            <label for="test" className="radio-label">1</label>
+                        </div>
+                        <div>
+                            <input value="2" type="radio" name="radio-group" id="test2" onClick={this.choosePosition}>
+                            </input>
+                            <label for="test2" className="radio-label">2</label>
+                        </div>
+                        <div>
+                            <input value="3" type="radio" name="radio-group" id="test3" onClick={this.choosePosition}>
+                            </input>
+                            <label for="test3" className="radio-label">3</label>
+                        </div>
+                    </radiogroup>
                 </div>
                 </container>
 
