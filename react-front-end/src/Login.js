@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './login.css'
+import './styles/login.css'
 import Setup from './Setup.js';
 
 class Login extends Component {
@@ -24,7 +24,7 @@ class Login extends Component {
                         Name:
                         <input type="text" name="name" onChange={(event) => this.setState({user: event.target.value})} />
                     </label>
-                    <input type="submit" value="Alohomora" />
+                    <input type="submit" value="Alohomora" placeholder='Your name'/>
                 </form>
             </div>
         );

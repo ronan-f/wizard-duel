@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './styles/App.css';
 import PlayerSpellList from "./PlayerSpellList.js";
 import NotificationBar from "./NotificationBar.js";
 import MyCharacter from './MyCharacter.js'
@@ -10,14 +10,22 @@ import axios from 'axios';
 
 class Game extends Component {
     fetchData = () => {
-      axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
+      axios.get('/api/spells') // You can simply make your requests to "/api/whatever you want"
       .then((response) => {
         // handle success
         console.log(response.data) // The entire response from the Rails API
-
-        console.log(response.data.message) // Just the message
         this.setState({
-          message: response.data.message
+          message: response.data.message,
+          dbSpells: response.data.spells
+        });
+      })
+      axios.get('/api/wizards') // You can simply make your requests to "/api/whatever you want"
+      .then((response) => {
+        // handle success
+        console.log(response.data) // The entire response from the Rails API
+        this.setState({
+          message: response.data.message,
+          wizards: response.data.wizards
         });
       })
     }
@@ -33,8 +41,9 @@ class Game extends Component {
           </div>
 
           <div className='characterSection'>
-            < OpponentCharacter characterInfo={opponentCharacter} />
             < MyCharacter characterInfo={myCharacter} />
+            < spellAnimation />
+            < OpponentCharacter characterInfo={opponentCharacter} />
           </div>
 
           <button className='castSpellBtn' onClick={() => this.props.newNotification()}>

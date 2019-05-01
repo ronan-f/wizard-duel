@@ -1,0 +1,40 @@
+.characterSelection{
+  display:flex;
+  justify-content: space-around;
+  width:100%;
+}
+.playerDiv{
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  background-size:cover;
+  height:  33vmin;
+  width: 33vmin;
+  background-image: url(/frog_card_template.png);
+}
+.health{
+  margin: 0;
+  background:white;
+}
+
+.opponentDiv{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-size:cover;
+  height:  33vmin;
+  width: 33vmin;
+  background-image: url(/frog_card_template.png);
+}
+
+.myChar {
+  height: 200px;
+  width: 200px;
+  margin-top: 25%;
+}
+
+.opponentChar {
+  height: 200px;
+  width: 200px;
+}

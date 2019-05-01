@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import './opponentCharacter.css';
+import './styles/frog_cards.css';
+
 
 
 class OpponentCharacter extends Component {
     render() {
         return(
-            <div>
-                <img className='opponentChar'src='https://files.slack.com/files-pri/T2G8TE2E5-FJA0RLC5S/bellatrix__3_.gif' alt='opponent character'/>
+            <div className='characterSelection'>
+            <div className='opponentDiv'>
+                <img className='myChar' src='/character_gifs/right_view/voldemort.gif' alt='my character'/>
             </div>
+        </div>
         )
     }
 }

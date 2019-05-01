@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './instructions.css'
+import './styles/instructions.css'
 
 
 class Instructions extends Component {
