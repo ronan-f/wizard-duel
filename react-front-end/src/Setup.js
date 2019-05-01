@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import OpponentCharacter from './OpponentCharacter.js'
 import './styles/setup.css'
-
+import { Redirect } from 'react-router'
 
 
 class Setup extends Component {
-    lightWizard = null;
-    darkWizard = null;
+    lightWizardObj = null;
+    darkWizardObj = null;
+
 
     randomCharacter = () => {
         const { wizards } = this.props.state
@@ -14,38 +15,38 @@ class Setup extends Component {
         const darkImgs = [];
         for(let wizard of wizards){
             if(wizard.army === 'Death Eater'){
-                darkImgs.push(wizard.right_image)
+                darkImgs.push(wizard)
             } else {
-                lightImgs.push(wizard.right_image)
+                lightImgs.push(wizard)
             }
         }
-        console.log('shoud be light', lightImgs);
-        console.log(darkImgs)
-        this.lightWizard = lightImgs[Math.floor(Math.random() * lightImgs.length)];
-        this.darkWizard = darkImgs[Math.floor(Math.random() * darkImgs.length)];
+        this.lightWizardObj = lightImgs[Math.floor(Math.random() * lightImgs.length)];
+        this.darkWizardObj = darkImgs[Math.floor(Math.random() * darkImgs.length)];
     }
 
     render() {
         this.randomCharacter();
+        console.log(this.props.state.myCharacter)
 
         return (
+            this.props.state.myCharacter ? (<Redirect to="/spell_setup"/>) :
             <React.Fragment>
                 <h1 className='textInfo'> {this.props.state.currentUser} choose your army!!!</h1>
                 <div className='characterContainer'>
                     <div className='left'>
                     <p className='leftCharacter'>Dumbledore's Army</p>
-                    <OpponentCharacter charImg={this.lightWizard}/>
+                    <OpponentCharacter charImg={this.lightWizardObj.right_image}/>
                     </div>
                     <div className='right'>
                     <p>Death Eater</p>
-                    <OpponentCharacter charImg={this.darkWizard}/>
+                    <OpponentCharacter charImg={this.darkWizardObj.right_image}/>
                     </div>
                 </div>
                 <div  className='charBtn'>
-                    <button>
+                    <button onClick={() => this.props.chooseWizard(this.lightWizardObj.name) }>
                         button to choose character
                     </button>
-                    <button>
+                    <button onClick={() => this.props.chooseWizard(this.darkWizardObj.name)}>
                         button to choose character
                     </button>
                 </div>

@@ -8,6 +8,8 @@ import Login from './Login.js';
 import Setup from './Setup.js';
 import SpellSetup from './SpellSetup';
 import axios from 'axios';
+import { Redirect } from 'react-router'
+
 
 class App extends Component {
   constructor(props) {
@@ -25,6 +27,10 @@ class App extends Component {
 
   chooseSpell = (spell) => {
     this.setState({currentSpell: spell})
+  }
+
+  chooseWizard = (wizard) => {
+    this.setState({myCharacter: wizard})
   }
 
   newNotification = () => {
@@ -60,7 +66,7 @@ class App extends Component {
           <Route exact path='/'render={(props) => <Login {...props} newUser={this.newUser} state={this.state} loadDb={this.fetchData}/>} />
           <Route path='/game'render={(props) => <Game {...props} chooseSpell={this.chooseSpell} newNotification={this.newNotification} state={this.state}/>}/>
           <Route path='/instructions' component={Instructions}/>
-          <Route path='/setup'render={(props) => <Setup {...props} state={this.state}/>}/>
+          <Route path='/setup'render={(props) => <Setup {...props} state={this.state} chooseWizard={this.chooseWizard}/>}/>
           <Route path='/spell_setup' component={SpellSetup}/>
         </div>
       </BrowserRouter>
