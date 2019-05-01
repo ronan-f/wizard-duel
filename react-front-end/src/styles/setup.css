@@ -15,3 +15,7 @@
 .left{
     transform: scaleX(-1);
 }
+
+p{
+    background:white;
+}
