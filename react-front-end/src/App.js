@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './styles/App.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Game from './Game.js';
 import Instructions from './Instructions';
@@ -11,23 +11,61 @@ import SpellSetup from './SpellSetup';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentUser: '',
+      currentSpell: '',
+      spells:
+      [
+        {
+          id: 1,
+          name: 'Expelliarmus',
+          description: 'Blast your opponent',
+          power: 5,
+          limit: 3
+        },
+        {
+          id: 2,
+          name: 'avadakadabra',
+          description: 'kills opponent',
+          power: 10,
+          limit: 1
+        }
+      ],
+      notifications: ['New player has joined', 'Player 1, your turn!'],
+      myCharacter: {name: 'Dumbledore', image: 'https://vignette.wikia.nocookie.net/harrypotter/images/2/2f/101-albus_dumbledore.gif/revision/latest/scale-to-width-down/180?cb=20120622181924', health: 10},
+      opponentCharacter: {name: 'Ron', image:'https://vignette.wikia.nocookie.net/harrypotter/images/2/2f/101-albus_dumbledore.gif/revision/latest/scale-to-width-down/180?cb=20120622181924' }
+
+    }
+  }
+
+  chooseSpell = (spell) => {
+    this.setState({currentSpell: spell})
+  }
+
+  newNotification = () => {
+    this.setState({notifications: this.state.notifications.concat(`Player 1 used ${this.state.currentSpell}`)})
+  }
+
+  newUser = (user) => {
+    this.setState({currentUser: user})
+  }
+
   render() {
     return (
       <BrowserRouter>
         <div>
           <Navigation />
-          <Route path='/' component={Login} exact />
-          <Route path='/game' component={Game} />
+          <Route exact path='/'render={(props) => <Login {...props} newUser={this.newUser} state={this.state}/>}/>
+          <Route path='/game'render={(props) => <Game {...props} chooseSpell={this.chooseSpell} newNotification={this.newNotification} state={this.state}/>}/>
           <Route path='/instructions' component={Instructions}/>
           <Route path='/setup' component={Setup}/>
           <Route path='/spell_setup' component={SpellSetup}/>
-
         </div>
       </BrowserRouter>
     )
   }
 }
-
-
 
 export default App;

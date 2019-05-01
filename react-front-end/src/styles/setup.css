@@ -1,0 +1,21 @@
+.characterContainer{
+    display: flex;
+    justify-content: space-around;
+}
+
+.textInfo {
+    color: white;
+}
+
+.charBtn {
+    display: flex;
+    justify-content: space-around;
+}
+
+.left{
+    transform: scaleX(-1);
+}
+
+p{
+    background:white;
+}
