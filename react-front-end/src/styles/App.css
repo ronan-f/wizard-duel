@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+<<<<<<< HEAD:react-front-end/src/styles/App.css
+=======
+  /* background-color: white; */
+
+>>>>>>> 74e91064e743203e4da2b1586adf6db68c6ac6f1:react-front-end/src/App.css
 }
 
 .App-logo {
@@ -45,10 +50,21 @@
   display: flex;
   justify-content: space-evenly;
   margin: 5%;
+  background:rgb(248, 200, 111);
+  /* opacity: .5; */
 }
 
 .characterSection {
   margin: 5%;
   display: flex;
   justify-content: space-between;
+}
+
+.health {
+  color: white;
+  font-size: 30px;
+  font-weight: 900;
+  border-style: solid;
+  padding: 3%;
+  background-color: black;
 }

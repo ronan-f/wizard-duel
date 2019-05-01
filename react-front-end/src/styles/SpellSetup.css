@@ -1,5 +1,8 @@
-.main {
-    /* background-color: lightgray; */
-    height: 400px;
-    width: 600px;
+.spellSetup {
+    height: 50vmin;
+    width: 45vmin;
+}
+
+#spellsList{
+    background:pink;
 }
