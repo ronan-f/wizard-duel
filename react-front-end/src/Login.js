@@ -3,16 +3,14 @@ import './styles/login.css'
 class Login extends Component {
     render() {
         return (
-            <div>
-                <h2 className='welcomeMessage'>Enter your name to begin...</h2>
+            <div className='login'>
+                <h2 className='welcomeMessage'>Give your name to choose an army!</h2>
                 <form className='loginForm'>
                     <label>
-                        Name:
                         <input type="text" name="name" />
                     </label>
-                    <input type="submit" value="Alohomora" />
+                    <input type="submit" value="Alohomora" placeholder='Your name'/>
                 </form>
-
             </div>
 
         );

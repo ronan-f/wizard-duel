@@ -1,6 +1,6 @@
 .characterContainer{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .textInfo {
@@ -9,5 +9,9 @@
 
 .charBtn {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+}
+
+.left{
+    transform: scaleX(-1);
 }

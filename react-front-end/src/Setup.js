@@ -10,8 +10,8 @@ class Setup extends Component {
             <React.Fragment>
                 <h1 className='textInfo'>Pick your character to get started</h1>
                 <div className='characterContainer'>
-                    <OpponentCharacter/>
-                    <OpponentCharacter/>
+                    <div className='left'><OpponentCharacter/></div>
+                    <div className='right'><OpponentCharacter/></div>
                 </div>
                 <div  className='charBtn'>
                     <button>

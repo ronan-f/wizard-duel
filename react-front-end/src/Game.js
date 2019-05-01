@@ -35,7 +35,7 @@ class Game extends Component {
         ],
         notifications: ['New player has joined', 'Player 1, your turn!'],
         myCharacter: {name: 'Dumbledore', image: 'https://vignette.wikia.nocookie.net/harrypotter/images/2/2f/101-albus_dumbledore.gif/revision/latest/scale-to-width-down/180?cb=20120622181924', health: 10},
-        opponentCharacter: {name: 'Ron', image:'https://vignette.wikia.nocookie.net/harrypotter/images/2/2f/101-albus_dumbledore.gif/revision/latest/scale-to-width-down/180?cb=20120622181924' }
+        // opponentCharacter: {name: 'Ron', image:'https://vignette.wikia.nocookie.net/harrypotter/images/2/2f/101-albus_dumbledore.gif/revision/latest/scale-to-width-down/180?cb=20120622181924' }
 
       }
     }
@@ -75,8 +75,9 @@ class Game extends Component {
           </div>
 
           <div className='characterSection'>
-            < OpponentCharacter characterInfo={opponentCharacter} />
             < MyCharacter characterInfo={myCharacter} />
+            < spellAnimation />
+            < OpponentCharacter characterInfo={opponentCharacter} />
           </div>
 
           <button className='castSpellBtn' onClick={() => this.setState({notifications: notifications.concat(`Player 1 used ${currentSpell}`)})}>
