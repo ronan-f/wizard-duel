@@ -7,6 +7,48 @@ import OpponentCharacter from './OpponentCharacter.js';
 import axios from 'axios';
 
 
+let player1 = {
+  name: 'Sebastian',
+  character: 'Rubeus Hagrid',
+  currentPosition: 1,
+  spells: [
+    {
+      name: 'Confrigo',
+      description: "fiery cast, inflicts 2 points of damage to opponent's shield",
+      power: 2,
+      cast_limit: 100
+    },
+    {
+      name: 'Bombarda',
+      description: "Deals 3 damage to opponent's shield",
+      power: 3,
+      cast_limit: 3
+    }
+  ],
+  defence: 5
+}
+
+// let player2 = {
+//   name: 'Kira',
+//   character: 'Bellatrix Lestrange',
+//   currentPosition: 3,
+//   spells: [
+//     {
+//       name: 'Confrigo',
+//       description: "fiery cast, inflicts 2 points of damage to opponent's shield",
+//       power: 2,
+//       cast_limit: 100
+//     },
+//     {
+//       name: 'Alohomora',
+//       description: 'Unlocks doors, questionable for use in battle.',
+//       power: 0,
+//       cast_limit: 100
+//     }
+//   ],
+//   defence: 5
+// }
+
 
 class Game extends Component {
     constructor(props) {
