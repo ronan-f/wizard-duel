@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import Spell from "./Spell.js";
-import './styles/spellList.css'
-import './styles/SpellSetup.css'
-import { NavLink } from 'react-router-dom'
-
+import './styles/spellList.css';
+import './styles/SpellSetup.css';
+import { NavLink } from 'react-router-dom';
 
 class SpellSetup extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            playerPosition: 1
+        }
+    }
+    // choosePosition = (positionNumber) => {
+    //     this.setState({ playerPosition: positionNumber });
+    // }
+    sayPosition = (e) => {
+        console.log(e.target.value);
+        // console.log('Button was clicked')
+    }
     render() {
         const spellsArr =[
             {
@@ -69,6 +81,16 @@ class SpellSetup extends Component {
                         {spellArray}
                     </tbody>
                 </table>
+                </container>
+                <container className='playerPositioning'>
+                <div>
+                    <h3>Choose your wizard's position</h3>
+                </div>
+                <div>
+                    <button value="Position 1" onClick={this.sayPosition}>Position: 1</button>
+                    <button value="Position 2" onClick={this.sayPosition}>Position: 2</button>
+                    <button value="Position 3" onClick={this.sayPosition}>Position: 3</button>
+                </div>
                 </container>
 
                 <NavLink to='/game' id='START'>Start Game!</NavLink>
