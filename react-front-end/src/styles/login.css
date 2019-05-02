@@ -27,5 +27,9 @@ textarea{
 }
 
 body {
-    background-image: url('https://trello-attachments.s3.amazonaws.com/5cb38a347d90d388b0f7bfa0/5cc49deba6259179613076b6/fba0dae04931b3d6ecd257e6530b9bab/gamestart.jpg')
+    /* background-image: url('https://trello-attachments.s3.amazonaws.com/5cb38a347d90d388b0f7bfa0/5cc49deba6259179613076b6/fba0dae04931b3d6ecd257e6530b9bab/gamestart.jpg') */
+    /* background-image: url('/softerbackground.png'); */
+    /* margin-left: 100px; */
+    background-image: url('/deathly-hallows-wallpapers-24.jpg');
 }
+
