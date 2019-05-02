@@ -7,7 +7,7 @@ import OpponentCharacter from './OpponentCharacter.js';
 
 class Game extends Component {
     render() {
-      console.log('current state', this.props.state)
+      // console.log('current state', this.props.state)
       const { spells, notifications, myCharacter, opponentCharacter } =  this.props.state
       return (
         <div className="App">

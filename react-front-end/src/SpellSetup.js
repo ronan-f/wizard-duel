@@ -22,7 +22,7 @@ class SpellSetup extends Component {
     choosePosition = (e) => {
         let numberified = Number(e.target.value);
         this.setState({ playerPosition: numberified }, () => {
-            console.log(this.state.playerPosition);
+            // console.log(this.state.playerPosition);
         });
     }
     findSpell = (id) => {

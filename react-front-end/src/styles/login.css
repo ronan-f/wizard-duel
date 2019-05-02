@@ -3,8 +3,22 @@
     flex-wrap: wrap;
     justify-content: center;
     color: white;
+    margin-top: 15%;
+}
+textarea{
+    height: 200px;
+    width: 100%;
 }
 
+.input{
+    height: 50px;
+    width:300px;
+    font-size: 36px;
+    /* background:yellow; */
+}
+.button{
+    font-size: 32px;
+}
 .welcomeMessage{
     flex-wrap: wrap;
     text-align: center;

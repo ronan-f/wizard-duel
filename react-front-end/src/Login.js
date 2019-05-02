@@ -21,10 +21,9 @@ class Login extends Component {
             <div>
                 <form className='loginForm' onSubmit={this.handleSubmit.bind(this)}>
                     <label>
-                        Name:
-                        <input type="text" name="name" onChange={(event) => this.setState({user: event.target.value})} />
+                        <input className='input' type="text" name="name" placeholder='Your name' onChange={(event) => this.setState({user: event.target.value})} />
                     </label>
-                    <input type="submit" value="Alohomora" placeholder='Your name'/>
+                    <input type="submit" className='button' value="Alohomora"/>
                 </form>
             </div>
         );
