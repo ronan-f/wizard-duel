@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Spell from "./Spell.js";
 import AvailableSpell from "./AvailableSpell.js";
 import './styles/spellList.css';
 import './styles/SpellSetup.css';
@@ -79,9 +78,9 @@ class SpellSetup extends Component {
 
         return <div className='spellSetup'>
             <div className="wizard-info">
-                    <h2>{this.props.state.myCharacter}'s Spells</h2>
+                    <h2>{this.props.state.myCharacter.name}'s Spells</h2>
                     <h1>Arm Yourself!</h1>
-                    <span class="dot">Remaining Mana:{this.state.playerMana}</span>
+                    <span className="dot">Remaining Mana:{this.state.playerMana}</span>
                 </div>
             <container className="spell-selection">
                 <div className="available-spells">

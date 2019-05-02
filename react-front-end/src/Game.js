@@ -4,25 +4,79 @@ import PlayerSpellList from "./PlayerSpellList.js";
 import NotificationBar from "./NotificationBar.js";
 import MyCharacter from './MyCharacter.js'
 import OpponentCharacter from './OpponentCharacter.js';
+import socketIOClient from "socket.io-client";
+
 
 class Game extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      opponentChar: null,
+      opponentImg: '',
+      myTurn: true,
+      currentSpell: ''
+    }
+  }
+  
+  componentDidMount(){
+    this.socket = socketIOClient('http://localhost:5000/');
+    this.socket.on('updateCharacter', this.setOpponentChar)
+    this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)))
+  }
+  
+  setOpponentChar = (char) => {
+    this.setState({
+      opponentChar: JSON.parse(char)
+    })
+  }
+  chooseSpell = (spell) => {
+    // this.setState({currentSpell: spell}, () => {
+    //   console.log(this.state.currentSpell);
+    // })
+    this.setState({currentSpell: spell})
+  }
+
+  updateTurn = () => {
+    this.setState({ myTurn: !this.state.myTurn}, () => {
+        console.log(this.state.myTurn)
+    })
+  }
+
+  opponentCast = () => {
+    if (opponent.attack.aim === this.props.state.myPosition) {
+      if (this.props.state.myDefence <= 0) {
+        // End game logic
+      }
+      this.props.takeDamage(opponent.attack.id);
+    }
+  }
+
+  endPlayerTurn = () => {
+    // if (this.state.myTurn) {
+      this.updateTurn();
+      this.props.newNotification(this.currentSpell);
+      // console.log(this.state.myTurn, this.state.currentSpell);
+    // }
+  }
+
     render() {
+
       // console.log('current state', this.props.state)
-      const { spells, notifications, myCharacter, opponentCharacter } =  this.props.state
+      const { notifications, myCharacter } =  this.props.state
       return (
         <div className="App">
           <div className='infoBar'>
-            < PlayerSpellList chooseSpell={this.props.chooseSpell} userSpells={this.props.state.mySpells}/>
+            < PlayerSpellList chooseSpell={this.chooseSpell} userSpells={this.props.state.mySpells}/>
             < NotificationBar notifications={notifications} />
           </div>
 
           <div className='characterSection'>
             < MyCharacter characterInfo={myCharacter} />
             < spellAnimation />
-            < OpponentCharacter characterInfo={opponentCharacter} />
+            < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.right_image : ''} />
           </div>
 
-          <button className='castSpellBtn' onClick={() => this.props.newNotification()}>
+          <button className='castSpellBtn' onClick={() => this.endPlayerTurn()}>
               Cast Spell
           </button>
 

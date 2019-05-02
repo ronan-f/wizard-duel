@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './styles/login.css'
-import socketIOClient from "socket.io-client";
 import { Redirect } from 'react-router'
 
 
@@ -10,10 +9,6 @@ class Login extends Component {
         this.state = {
             user: '',
         }
-    }
-    componentDidMount(){
-        this.socket = socketIOClient('http://localhost:5000/');
-        this.socket.emit('chat message', 'I joined the socket server')
     }
 
     handleSubmit = (event) => {
