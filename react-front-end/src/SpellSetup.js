@@ -119,7 +119,7 @@ class SpellSetup extends Component {
                 </radiogroup>
             </div>
             </container>
-                <NavLink to='/game' id='start'>Start Game!</NavLink>
+                <NavLink to='/game' id='start' onClick={() => this.props.setPlayerOptions(this.state.chosenSpells, this.state.playerPosition)}>Start Game!</NavLink>
 
         </div>
 
