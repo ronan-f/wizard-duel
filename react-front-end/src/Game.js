@@ -4,17 +4,31 @@ import PlayerSpellList from "./PlayerSpellList.js";
 import NotificationBar from "./NotificationBar.js";
 import MyCharacter from './MyCharacter.js'
 import OpponentCharacter from './OpponentCharacter.js';
+import socketIOClient from "socket.io-client";
+
 
 class Game extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      opponentCharacter: null,
+      opponentChar: null,
+      opponentImg: '',
       myTurn: true,
       currentSpell: ''
     }
   }
-
+  
+  componentDidMount(){
+    this.socket = socketIOClient('http://localhost:5000/');
+    this.socket.on('updateCharacter', this.setOpponentChar)
+    this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)))
+  }
+  
+  setOpponentChar = (char) => {
+    this.setState({
+      opponentChar: JSON.parse(char)
+    })
+  }
   chooseSpell = (spell) => {
     // this.setState({currentSpell: spell}, () => {
     //   console.log(this.state.currentSpell);
@@ -46,8 +60,9 @@ class Game extends Component {
   }
 
     render() {
+
       // console.log('current state', this.props.state)
-      const { spells, notifications, myCharacter, opponentCharacter } =  this.props.state
+      const { notifications, myCharacter } =  this.props.state
       return (
         <div className="App">
           <div className='infoBar'>
@@ -58,7 +73,7 @@ class Game extends Component {
           <div className='characterSection'>
             < MyCharacter characterInfo={myCharacter} />
             < spellAnimation />
-            < OpponentCharacter characterInfo={opponentCharacter} />
+            < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.right_image : ''} />
           </div>
 
           <button className='castSpellBtn' onClick={() => this.endPlayerTurn()}>
