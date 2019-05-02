@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Spell from "./Spell.js";
+import AvailableSpell from "./AvailableSpell.js";
 import './styles/spellList.css';
 import './styles/SpellSetup.css';
 import './styles/radio_button.css';
@@ -22,36 +23,20 @@ class SpellSetup extends Component {
         });
     }
     render() {
-        const spellsArr =[
-            {
-              id: 1,
-              name: 'Expelliarmus',
-              description: 'Blast your opponent',
-              power: 5,
-              limit: 3
-            },
-            {
-              id: 2,
-              name: 'avadakadabra',
-              description: 'kills opponent',
-              power: 10,
-              limit: 1
-            }
-          ]
 
-        // const spellArray = spellsArr.map((spell) => {
-        //     return(
-        //         <React.Fragment>
-        //             <Spell
-        //                 name={spell.name}
-        //                 description={spell.description}
-        //                 power={spell.power}
-        //                 limit={spell.limit}
-        //                 chooseSpell={this.props.chooseSpell}
-        //             />
-        //         </React.Fragment>
-        //     );
-        // });
+        const spellArray = this.props.state.spells.map((spell) => {
+            return(
+                <React.Fragment>
+                    <AvailableSpell
+                        name={spell.name}
+                        description={spell.description}
+                        cast_limit={spell.cast_limit}
+                        cost={spell.cost}
+                        turns={spell.turns}
+                    />
+                </React.Fragment>
+            );
+        });
 
         // const spellList = spellsArr.map((spell) => {
         //     return{
@@ -68,6 +53,7 @@ class SpellSetup extends Component {
                         <span class="dot">6</span>
                     </div>
                     <div className="available-spells">
+                        {spellArray}
                     </div>
                 </container>
                 <container  className="purchased-spells">

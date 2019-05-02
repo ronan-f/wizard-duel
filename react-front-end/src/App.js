@@ -67,7 +67,7 @@ class App extends Component {
           <Route path='/game'render={(props) => <Game {...props} chooseSpell={this.chooseSpell} newNotification={this.newNotification} state={this.state}/>}/>
           <Route path='/instructions' component={Instructions}/>
           <Route path='/setup'render={(props) => <Setup {...props} state={this.state} chooseWizard={this.chooseWizard}/>}/>
-          <Route path='/spell_setup' component={SpellSetup}/>
+          <Route path='/spell_setup' render={(props) => <SpellSetup {...props} state={this.state} />}/>
         </div>
       </BrowserRouter>
     )

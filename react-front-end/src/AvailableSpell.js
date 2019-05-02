@@ -7,9 +7,9 @@ class AvailableSpell extends Component {
       <React.Fragment>
         <div>
           <h3>{name}</h3>
-          <h4 className="circle-display">{cost}</h4>
-          <h4 className="circle-display">{turns}</h4>
-          <h4 className="circle-display">{cast_limit}</h4>
+          <h5 className="circle-display">{cost}</h5>
+          <h5 className="circle-display">{turns}</h5>
+          <h5 className="circle-display">{cast_limit}</h5>
         </div>
         <div>
           <p>{description}</p>
@@ -18,3 +18,5 @@ class AvailableSpell extends Component {
     )
   }
 }
+
+export default AvailableSpell;
