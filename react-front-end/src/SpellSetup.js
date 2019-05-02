@@ -81,7 +81,7 @@ class SpellSetup extends Component {
             <div className="wizard-info">
                     <h2>{this.props.state.myCharacter}'s Spells</h2>
                     <h1>Arm Yourself!</h1>
-                    <span class="dot">Remaining Mana:{this.state.playerMana}</span>
+                    <span className="dot">Remaining Mana:{this.state.playerMana}</span>
                 </div>
             <container className="spell-selection">
                 <div className="available-spells">
