@@ -3,8 +3,22 @@
     flex-wrap: wrap;
     justify-content: center;
     color: white;
+    margin-top: 15%;
+}
+textarea{
+    height: 200px;
+    width: 100%;
 }
 
+.input{
+    height: 50px;
+    width:300px;
+    font-size: 36px;
+    /* background:yellow; */
+}
+.button{
+    font-size: 32px;
+}
 .welcomeMessage{
     flex-wrap: wrap;
     text-align: center;
@@ -13,5 +27,9 @@
 }
 
 body {
-    background-image: url('https://trello-attachments.s3.amazonaws.com/5cb38a347d90d388b0f7bfa0/5cc49deba6259179613076b6/fba0dae04931b3d6ecd257e6530b9bab/gamestart.jpg')
+    /* background-image: url('https://trello-attachments.s3.amazonaws.com/5cb38a347d90d388b0f7bfa0/5cc49deba6259179613076b6/fba0dae04931b3d6ecd257e6530b9bab/gamestart.jpg') */
+    /* background-image: url('/softerbackground.png'); */
+    /* margin-left: 100px; */
+    background-image: url('/deathly-hallows-wallpapers-24.jpg');
 }
+

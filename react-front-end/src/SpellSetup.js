@@ -22,7 +22,7 @@ class SpellSetup extends Component {
     choosePosition = (e) => {
         let numberified = Number(e.target.value);
         this.setState({ playerPosition: numberified }, () => {
-            console.log(this.state.playerPosition);
+            // console.log(this.state.playerPosition);
         });
     }
     findSpell = (id) => {
@@ -32,8 +32,8 @@ class SpellSetup extends Component {
                 updatedSpells.push(spell);
                 this.setState({ chosenSpell: updatedSpells, playerMana: (this.state.playerMana - spell.cost) })
                 // console.log("Found the spell");
-                console.log('========');
-                console.log(this.state);
+                // console.log('========');
+                // console.log('BOOYA', this.state);
             }
         }
     }
@@ -78,49 +78,53 @@ class SpellSetup extends Component {
         })
 
         return <div className='spellSetup'>
-            <h1>Arm Yourself!</h1>
-            <div className="spells">
-                <container className="spell-selection">
-                    <div className="wizard-info">
-                        <h2>Harry's Spells</h2>
-                        <span class="dot">{this.state.playerMana}</span>
-                    </div>
-                    <div className="available-spells">
-                        {spellArray}
-                    </div>
-                </container>
+            <div className="wizard-info">
+                    <h2>{this.props.state.myCharacter}'s Spells</h2>
+                    <h1>Arm Yourself!</h1>
+                    <span class="dot">Remaining Mana:{this.state.playerMana}</span>
+                </div>
+            <container className="spell-selection">
+                <div className="available-spells">
+                    {spellArray}
+                </div>
+            </container>
+            <div className='bottom'>
                 <container  className="purchased-spells">
-                    <div>
+                    <h1>Your battle spells!</h1>
+                    <div className='spellArray'>
                         {chosenSpellArray}
                     </div>
                 </container>
-            </div>
-            <container className='playerPositioning'>
-            <div>
-                <h3>Choose your wizard's position</h3>
-            </div>
-            <div className="radio-pillbox">
-                <radiogroup>
+                <div className='bottom-right'>
+                <container className='playerPositioning'>
                     <div>
-                        <input value="1" type="radio" name="radio-group" id="test" onClick={this.choosePosition}>
-                        </input>
-                        <label for="test" className="radio-label">1</label>
+                        <h3>Choose your wizard's position</h3>
                     </div>
-                    <div>
-                        <input value="2" type="radio" name="radio-group" id="test2" onClick={this.choosePosition}>
-                        </input>
-                        <label for="test2" className="radio-label">2</label>
+                    <div className="radio-pillbox">
+                        <radiogroup>
+                            <div>
+                                <input value="1" type="radio" name="radio-group" id="test" onClick={this.choosePosition}>
+                                </input>
+                                <label for="test" className="radio-label">1</label>
+                            </div>
+                            <div>
+                                <input value="2" type="radio" name="radio-group" id="test2" onClick={this.choosePosition}>
+                                </input>
+                                <label for="test2" className="radio-label">2</label>
+                            </div>
+                            <div>
+                                <input value="3" type="radio" name="radio-group" id="test3" onClick={this.choosePosition}>
+                                </input>
+                                <label for="test3" className="radio-label">3</label>
+                            </div>
+                        </radiogroup>
                     </div>
-                    <div>
-                        <input value="3" type="radio" name="radio-group" id="test3" onClick={this.choosePosition}>
-                        </input>
-                        <label for="test3" className="radio-label">3</label>
-                    </div>
-                </radiogroup>
+                    <div className='StartGame'>
+                    <NavLink className='dot2' to='/game' id='start' onClick={() => this.props.setPlayerOptions(this.state.chosenSpells, this.state.playerPosition)}>Start Game!</NavLink>
+                </div>
+                </container>
+                </div>
             </div>
-            </container>
-                <NavLink to='/game' id='start' onClick={() => this.props.setPlayerOptions(this.state.chosenSpells, this.state.playerPosition)}>Start Game!</NavLink>
-
         </div>
 
 
