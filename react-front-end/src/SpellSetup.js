@@ -10,6 +10,7 @@ class SpellSetup extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            playerMana: 10,
             playerPosition: 2,
             chosenSpells: []
         }
@@ -17,6 +18,7 @@ class SpellSetup extends Component {
     // choosePosition = (positionNumber) => {
     //     this.setState({ playerPosition: positionNumber });
     // }
+
     choosePosition = (e) => {
         let numberified = Number(e.target.value);
         this.setState({ playerPosition: numberified }, () => {
@@ -25,19 +27,30 @@ class SpellSetup extends Component {
     }
     findSpell = (id) => {
         for (let spell of this.props.state.spells) {
-            if (id === spell.id) {
+            if (id === spell.id && this.state.playerMana >= spell.cost) {
                 let updatedSpells = this.state.chosenSpells;
                 updatedSpells.push(spell);
-                this.setState({ chosenSpell: updatedSpells })
+                this.setState({ chosenSpell: updatedSpells, playerMana: (this.state.playerMana - spell.cost) })
                 // console.log("Found the spell");
                 console.log('========');
-                console.log(this.state.chosenSpells);
+                console.log(this.state);
             }
         }
     }
     selectSpell = (id) => {
         this.findSpell(id);
     }
+
+    removeSpell = (id) => {
+        for (let spell of this.state.chosenSpells) {
+            if (id === spell.id) {
+                let updatedSpells = this.state.chosenSpells;
+                updatedSpells.pop(spell);
+                this.setState({ chosenSpell: updatedSpells, playerMana: (this.state.playerMana + spell.cost) })
+            }
+        }
+    }
+
     render() {
 
         const spellArray = this.props.state.spells.map((spell) => {
@@ -56,13 +69,21 @@ class SpellSetup extends Component {
             );
         });
 
+        const chosenSpellArray = this.state.chosenSpells.map((spell) => {
+            return(
+                <div onClick={() => this.removeSpell(spell.id)}>
+                    {spell.name}
+                </div>
+            )
+        })
+
         return <div className='spellSetup'>
             <h1>Arm Yourself!</h1>
             <div className="spells">
                 <container className="spell-selection">
                     <div className="wizard-info">
                         <h2>Harry's Spells</h2>
-                        <span class="dot">6</span>
+                        <span class="dot">{this.state.playerMana}</span>
                     </div>
                     <div className="available-spells">
                         {spellArray}
@@ -70,8 +91,7 @@ class SpellSetup extends Component {
                 </container>
                 <container  className="purchased-spells">
                     <div>
-                        <ul>
-                        </ul>
+                        {chosenSpellArray}
                     </div>
                 </container>
             </div>
