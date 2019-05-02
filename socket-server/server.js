@@ -7,14 +7,19 @@ const server = http.createServer(app);
 const io = socketIO(server);
 
 let numberOfClients = 0;
+let character; //to send the first user the opponents character
 
 io.on("connection", socket => {
     numberOfClients ++;
     console.log('Number of online clients:', numberOfClients);
+    socket.broadcast.emit('newUser');
+    if (character){ //sending first user the opponents character
+        socket.emit('updateCharacter', character);
+    }
 
-    socket.on('updateCharacter', function(character) {
-        console.log('THERES A NEW CHARACTER', character)
-        socket.broadcast.emit('updateCharacter', character)
+    socket.on('updateCharacter', function(char) {
+        socket.broadcast.emit('updateCharacter', char);
+        character = char
     })
 
     socket.on('disconnect', function() {

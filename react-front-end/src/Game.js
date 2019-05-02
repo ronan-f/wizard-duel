@@ -16,18 +16,15 @@ class Game extends Component {
     }
 }
   setOpponentChar = (char) => {
-    console.log('THIS IS CHAR', char)
-    let opponentCharacter = JSON.parse(char);
     this.setState({
-      opponentChar: opponentCharacter
+      opponentChar: JSON.parse(char)
     })
-    console.log('CURRENT STATE', this.state);
   }
 
   componentDidMount(){
     this.socket = socketIOClient('http://localhost:5000/');
-    this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter))
     this.socket.on('updateCharacter', this.setOpponentChar)
+    this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)))
   }
 
 
