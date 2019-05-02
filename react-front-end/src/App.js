@@ -15,8 +15,8 @@ class App extends Component {
     this.state = {
       mySpells: [],
       myPosition: 2,
+      myDefence: 10,
       currentUser: '',
-      currentSpell: '',
       spells: null,
       notifications: ['New player has joined', 'Player 1, your turn!'],
       myCharacter: null,
@@ -37,8 +37,8 @@ class App extends Component {
     this.setState({ mySpells: spells, myPosition: position })
   }
 
-  newNotification = () => {
-    this.setState({notifications: this.state.notifications.concat(`Player 1 used ${this.state.currentSpell}`)})
+  newNotification = (spell) => {
+    this.setState({notifications: this.state.notifications.concat(`Player 1 used ${spell}`)})
   }
 
   newUser = (user) => {
@@ -62,6 +62,14 @@ class App extends Component {
     return Promise.all([this.fetchWizards(), this.fetchSpells()]);
   }
 
+  takeDamage = (id) => {
+    for (let spell of this.state.spells) {
+      if (spell.id === id) {
+        this.setState({ myDefence: this.state.myDefence - spell.power })
+      }
+    }
+  }
+  
   render() {
     return (
       <BrowserRouter>
