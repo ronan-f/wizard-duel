@@ -10,7 +10,8 @@ class SpellSetup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            playerPosition: 2
+            playerPosition: 2,
+            chosenSpells: []
         }
     }
     // choosePosition = (positionNumber) => {
@@ -22,27 +23,38 @@ class SpellSetup extends Component {
             console.log(this.state.playerPosition);
         });
     }
+    findSpell = (id) => {
+        for (let spell of this.props.state.spells) {
+            if (id === spell.id) {
+                let updatedSpells = this.state.chosenSpells;
+                updatedSpells.push(spell);
+                this.setState({ chosenSpell: updatedSpells })
+                // console.log("Found the spell");
+                console.log('========');
+                console.log(this.state.chosenSpells);
+            }
+        }
+    }
+    selectSpell = (id) => {
+        this.findSpell(id);
+    }
     render() {
 
         const spellArray = this.props.state.spells.map((spell) => {
             return(
                 <React.Fragment>
                     <AvailableSpell
+                        id={spell.id}
                         name={spell.name}
                         description={spell.description}
                         cast_limit={spell.cast_limit}
                         cost={spell.cost}
                         turns={spell.turns}
+                        selectSpell={this.selectSpell}
                     />
                 </React.Fragment>
             );
         });
-
-        // const spellList = spellsArr.map((spell) => {
-        //     return{
-
-        //     }
-        // })
 
         return <div className='spellSetup'>
             <h1>Arm Yourself!</h1>
@@ -59,9 +71,6 @@ class SpellSetup extends Component {
                 <container  className="purchased-spells">
                     <div>
                         <ul>
-                            <li>spell1.name</li>
-                            <li>spell2.name</li>
-                            <li>spell3.name</li>
                         </ul>
                     </div>
                 </container>

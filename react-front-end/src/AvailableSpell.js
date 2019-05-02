@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 class AvailableSpell extends Component {
   render() {
-    const { name, description, cast_limit, cost, turns } = this.props;
+    const { id ,name, description, cast_limit, cost, turns } = this.props;
     return (
-      <React.Fragment>
+      <container onClick={() => this.props.selectSpell(id)}>
         <div>
+          <h4>{id}</h4>
           <h3>{name}</h3>
           <h5 className="circle-display">{cost}</h5>
           <h5 className="circle-display">{turns}</h5>
@@ -14,7 +15,7 @@ class AvailableSpell extends Component {
         <div>
           <p>{description}</p>
         </div>
-      </React.Fragment>
+      </container>
     )
   }
 }
