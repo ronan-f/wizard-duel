@@ -45,10 +45,10 @@ class Setup extends Component {
                     </div>
                 </div>
                 <div  className='charBtn'>
-                    <button onClick={() => this.props.chooseWizard(this.lightWizardObj.name) }>
+                    <button onClick={() => this.props.chooseWizard(this.lightWizardObj) }>
                         button to choose character
                     </button>
-                    <button onClick={() => this.props.chooseWizard(this.darkWizardObj.name)}>
+                    <button onClick={() => this.props.chooseWizard(this.darkWizardObj)}>
                         button to choose character
                     </button>
                 </div>
