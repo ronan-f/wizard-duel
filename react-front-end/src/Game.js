@@ -12,7 +12,7 @@ class Game extends Component {
       return (
         <div className="App">
           <div className='infoBar'>
-            < PlayerSpellList chooseSpell={this.props.chooseSpell} userSpells={spells}/>
+            < PlayerSpellList chooseSpell={this.props.chooseSpell} userSpells={this.props.state.mySpells}/>
             < NotificationBar notifications={notifications} />
           </div>
 
