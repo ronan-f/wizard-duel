@@ -4,12 +4,18 @@
 }
 
 .textInfo {
+    padding-top: 2%;
+    padding-bottom: 2%;
     color: white;
 }
 
 .charBtn {
     display: flex;
     justify-content: space-around;
+}
+.opponentDiv{
+    /* padding-top: 2%; */
+    height:300px;
 }
 
 .left{

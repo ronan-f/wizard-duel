@@ -7,12 +7,12 @@ import OpponentCharacter from './OpponentCharacter.js';
 
 class Game extends Component {
     render() {
-      console.log('current state', this.props.state)
+      // console.log('current state', this.props.state)
       const { spells, notifications, myCharacter, opponentCharacter } =  this.props.state
       return (
         <div className="App">
           <div className='infoBar'>
-            < PlayerSpellList chooseSpell={this.props.chooseSpell} userSpells={spells}/>
+            < PlayerSpellList chooseSpell={this.props.chooseSpell} userSpells={this.props.state.mySpells}/>
             < NotificationBar notifications={notifications} />
           </div>
 

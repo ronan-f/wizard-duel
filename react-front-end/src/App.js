@@ -15,6 +15,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      mySpells: [],
+      myPosition: 2,
       currentUser: '',
       currentSpell: '',
       spells: null,
@@ -31,6 +33,10 @@ class App extends Component {
 
   chooseWizard = (wizard) => {
     this.setState({myCharacter: wizard})
+  }
+
+  setPlayerOptions = (spells, position) => {
+    this.setState({ mySpells: spells, myPosition: position })
   }
 
   newNotification = () => {
@@ -67,7 +73,7 @@ class App extends Component {
           <Route path='/game'render={(props) => <Game {...props} chooseSpell={this.chooseSpell} newNotification={this.newNotification} state={this.state}/>}/>
           <Route path='/instructions' component={Instructions}/>
           <Route path='/setup'render={(props) => <Setup {...props} state={this.state} chooseWizard={this.chooseWizard}/>}/>
-          <Route path='/spell_setup' component={SpellSetup}/>
+          <Route path='/spell_setup' render={(props) => <SpellSetup {...props} state={this.state} setPlayerOptions={this.setPlayerOptions}/>}/>
         </div>
       </BrowserRouter>
     )
