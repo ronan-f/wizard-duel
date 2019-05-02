@@ -11,7 +11,6 @@ App.use(Express.static('public'));
 App.get('/api/wizards', (req, res) => {
   let response = function(characters) {
     let wizards = {wizards:characters}
-    console.log("THE WIZARDS:", wizards)
     res.json({
       message:`Coming back from the server with the wizards ${wizards}`,
       wizards
@@ -24,7 +23,6 @@ App.get('/api/wizards', (req, res) => {
 App.get('/api/spells', (req, res) => {
   let response = function(thespells) {
     let spells = {spells:thespells}
-    console.log("THE SPELLS:", spells)
     res.json({
       message:`Coming back from the server with the spells ${spells}`,
       spells
