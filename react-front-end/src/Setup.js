@@ -26,7 +26,7 @@ class Setup extends Component {
 
     render() {
         this.randomCharacter();
-        console.log(this.props.state.myCharacter)
+        // console.log(this.props.state.myCharacter)
 
         return (
             this.props.state.myCharacter ? (<Redirect to="/spell_setup"/>) :

@@ -1,66 +1,171 @@
 .spellSetup {
+    /* display: flex; */
+    /* justify-content: first baseline; */
     height: 50vmin;
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     flex-wrap: wrap;
-    color: 		black;
-    font-weight: bold;
+    color:white;
 }
 
 h1 {
-    width: 100%;
+    /* width: 100%; */
+    margin-top:2%;
+    margin-bottom:2%;
     text-align: center;
+    color:white;
     padding: 0;
     margin: 0;
 }
 
-.spells {
+.spell-selection {
+    margin-top: 5%;
     width: 100%;
-    margin: 0 5% 0 5%;
+    height: 100%;
+    margin-right: 5%;
     display: flex;
-    border: 3px green solid;
+    flex-wrap: wrap;
+    overflow: scroll;
+    overscroll-behavior-y: scroll;
 }
 
 .wizard-info {
     width: 100%;
-    height: 100%;
+    height: 15%;
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position:fixed;
+    /* margin-right: 400px; */
 }
 
 h2 {
-    width: 100%;
+    /* width: 100%; */
+    padding-left:10px;
 }
 
-.spell-selection {
-    width: 60%;
-    height: 50%;
-    margin-right: 5%;
+.available-spells {
+    width:100%;
+}
+.available-spells div {
     display: flex;
     flex-wrap: wrap;
-    border: 3px red solid;
-    background:white;
-    opacity: .5;
+    align-items: baseline;
+    padding: 0 2% 0 2%;
+    justify-content: space-between;
+    height: 1.5%;
 }
 
-.purchased-spells {
-    width: 25%;
-    background:white;
-    border: 3px red solid;
-    opacity: .5;
+.castinfo{
+    margin-right:-40px;
 }
 
-.dot {
-    height: 40px;
-    width: 40px;
-    background-color: green;
+h5{
+    height: 25px;
+    width: 140px;
+    background-color: rgb(50, 186, 238);
     border-radius: 50%;
     font-size: 1.5em;
     text-align: center;
+    margin:0;
+}
+.circle-display1{
+    margin-right: 10px;
+}
+.circle-display2{
+    width: 280px;
+}
+.StartGame{
+    margin-top: 10%;
 }
 
-#start {
-    background: white;
+.circle-display3{
+    background-color: rgb(28, 189, 28);
+    border-radius: 50%;
+    font-size: 1em;
+    padding: 1em;
+    text-align: center;
+    color: white;
+    margin:0;
 }
+
+.purchased-spells {
+    width: 650px;
+    height:200px;
+    overflow: scroll;
+    overscroll-behavior-y: scroll;
+    background: rgba(57, 149, 128, 0.7);
+    margin-top: 20px;
+    margin-left: -5%;
+
+}
+.spellArray{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    width: 100%;
+    padding-top: 2%;
+    /* columns: 2; */
+    font-size:40px;
+}
+
+.spellArray div{
+    flex-grow: 1;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+
+.dot {
+    height: 25px;
+    width: 280px;
+    background-color: rgb(28, 189, 28);
+    border-radius: 50%;
+    font-size: 1.5em;
+    text-align: center;
+    padding:0 10px;
+    margin-right:8%;
+    font-weight:bold;
+}
+
+.dot2 {
+    background-color: rgb(28, 189, 28);
+    border-radius: 50%;
+    font-size: 1.5em;
+    text-align: center;
+    padding:0 10px;
+    font-weight:bold;
+    margin-top:200px;
+}
+
+.dot2#start{
+    font-size:40px;
+    color:white;
+    position:center;
+    padding:4px 1.5em;
+}
+h4{
+    display:none;
+}
+h3{
+   font-size:24px;
+}
+p{
+    background:none;
+    font-style: italic;
+    padding-left: 4%;
+}
+
+#cast_limit{
+    width:240px;
+    padding-right:15px;
+}
+
+.bottom{
+    display:flex;
+    justify-content: space-between;
+    margin: 0 5%;
+    width: 100%;
+}
+
+

@@ -2,19 +2,25 @@ import React, { Component } from 'react';
 
 class AvailableSpell extends Component {
   render() {
-    const { name, description, cast_limit, cost, turns } = this.props;
+    const { id , name, description, cast_limit, cost, turns } = this.props;
     return (
-      <React.Fragment>
+      <container onClick={() => this.props.selectSpell(id)}>
         <div>
+          {/* <h4>{id}</h4> */}
           <h3>{name}</h3>
-          <h4 className="circle-display">{cost}</h4>
-          <h4 className="circle-display">{turns}</h4>
-          <h4 className="circle-display">{cast_limit}</h4>
+          <div className='castinfo'>
+          <h5 className="circle-display1">Mana:{cost}</h5>
+          <h5 className="circle-display">Turns:{turns}</h5>
+          {/* <h5 className="circle-display">Limit:{cast_limit}</h5> */}
+          </div>
         </div>
         <div>
           <p>{description}</p>
+          <h5 className="circle-display2">Limit:{cast_limit}</h5>
         </div>
-      </React.Fragment>
+      </container>
     )
   }
 }
+
+export default AvailableSpell;
