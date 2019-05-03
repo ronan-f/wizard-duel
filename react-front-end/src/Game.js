@@ -16,25 +16,32 @@ class Game extends Component {
       opponentImg: '',
       myTurn: false,
       currentSpell: '',
-      attackPosition: null
+      attackPosition: null,
+      gameOver: false
     }
   }
   
   componentDidMount(){
+    // this.socket = socketIOClient('http://192.168.88.11:5000/');
     this.socket = socketIOClient('http://localhost:5000/');
     this.socket.on('updateCharacter', this.setOpponentChar);
     this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)));
     this.socket.on('attack', this.opponentCast);
     this.socket.on('turnSetup', this.updateTurn);
+    this.socket.on('defence', this.updateTurn);
+    this.socket.on('endGame', this.endGame);
+    this.socket.on('notification', this.incomingNotification )
   }
   
-  // test = (state) => {
-  //   console.log('Socket Sent something');
-  //   // console.log(JSON.parse(id));
-  //   console.log(JSON.parse(state));
-  //   this.updateTurn();
-  // }
+  incomingNotification = (notification) => {
+    let parsed = JSON.parse(notification)
+    const { user, spell } = parsed.notification;
+    this.props.newNotification(user, spell.name)
+  }
 
+  endGame = () => {
+    this.setState({ gameOver: true });
+  }
 
   choosePosition = (e) => {
     let numberified = Number(e.target.value);
@@ -49,10 +56,10 @@ class Game extends Component {
     })
   }
   chooseSpell = (spell) => {
-    this.setState({currentSpell: spell}, () => {
-      console.log(this.state.currentSpell);
-    })
-    // this.setState({currentSpell: spell})
+    // this.setState({currentSpell: spell}, () => {
+    //   console.log(this.state.currentSpell);
+    // })
+    this.setState({currentSpell: spell})
   }
 
   updateTurn = () => {
@@ -65,7 +72,8 @@ class Game extends Component {
     const { attackPosition, currentSpell} = JSON.parse(state);
     if ( attackPosition === this.props.state.myPosition) {
       if (this.state.myDefence <= 0) {
-        // End game logic
+        this.setState({ gameOver: true });
+        this.socket.emit('gameOver');
         console.log('YOU LOST!');
       }
       this.takeDamage(currentSpell.power);
@@ -77,12 +85,20 @@ class Game extends Component {
     this.setState({ myDefence: this.state.myDefence - power })
   }
 
+  boostDefence = (power) => {
+    this.setState({ myDefence: this.state.myDefence + power })
+  }
+
   endPlayerTurn = () => {
     if (this.state.myTurn) {
+      if (this.state.currentSpell.name === 'Protego') {
+        this.boostDefence(this.state.currentSpell.power);
+        this.socket.emit('defence', JSON.stringify(this.state));
+      } else {
+        this.socket.emit('attack', JSON.stringify(this.state));
+      }
       this.updateTurn();
-      this.props.newNotification(this.state.currentSpell.name);
-      this.socket.emit('attack', JSON.stringify(this.state));
-      // console.log(this.state.myTurn, this.state.currentSpell);
+      this.socket.emit('notification', JSON.stringify({ notification: { user: this.props.state.currentUser, spell: this.state.currentSpell}}));
     }
   }
 
@@ -92,6 +108,7 @@ class Game extends Component {
       const { notifications, myCharacter } =  this.props.state
       return (
         <div className="App">
+        <h1>{this.state.gameOver ? "Game Over" : ""}</h1>
           <div className='infoBar'>
             < PlayerSpellList chooseSpell={this.chooseSpell} userSpells={this.props.state.mySpells}/>
             < NotificationBar notifications={notifications} />
