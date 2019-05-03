@@ -26,6 +26,7 @@ class Game extends Component {
     this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)));
     this.socket.on('attack', this.opponentCast);
     this.socket.on('turnSetup', this.updateTurn);
+    this.socket.on('defence', this.updateTurn);
   }
   
   // test = (state) => {
@@ -77,11 +78,20 @@ class Game extends Component {
     this.setState({ myDefence: this.state.myDefence - power })
   }
 
+  boostDefence = (power) => {
+    this.setState({ myDefence: this.state.myDefence + power })
+  }
+
   endPlayerTurn = () => {
     if (this.state.myTurn) {
+      if (this.state.currentSpell.name === 'Protego') {
+        this.boostDefence(this.state.currentSpell.power);
+        this.socket.emit('defence', JSON.stringify(this.state));
+      } else {
+        this.socket.emit('attack', JSON.stringify(this.state));
+      }
       this.updateTurn();
       this.props.newNotification(this.state.currentSpell.name);
-      this.socket.emit('attack', JSON.stringify(this.state));
       // console.log(this.state.myTurn, this.state.currentSpell);
     }
   }
