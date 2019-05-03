@@ -3,7 +3,7 @@ import './styles/spellList.css'
 
 class Spell extends Component {
     render() {
-        const {  name, description, power, limit } = this.props;
+        const {  spellObj, name, description, power, limit } = this.props;
         return (
 
             <React.Fragment>
@@ -13,7 +13,7 @@ class Spell extends Component {
                     <td className='spellsTable'>{power}</td>
                     <td className='spellsTable'>{limit}</td>
                     <td>
-                        <button className='spellChoiceBtn' onClick={() => this.props.chooseSpell(name) }>
+                        <button className='spellChoiceBtn' onClick={() => this.props.chooseSpell(spellObj) }>
                             Select
                         </button>
                     </td>
