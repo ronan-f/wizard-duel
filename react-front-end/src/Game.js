@@ -12,51 +12,78 @@ class Game extends Component {
     super(props)
     this.state = {
       opponentChar: null,
+      myDefence: 10,
       opponentImg: '',
-      myTurn: true,
-      currentSpell: ''
+      myTurn: false,
+      currentSpell: '',
+      attackPosition: null
     }
   }
   
   componentDidMount(){
     this.socket = socketIOClient('http://localhost:5000/');
-    this.socket.on('updateCharacter', this.setOpponentChar)
-    this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)))
+    this.socket.on('updateCharacter', this.setOpponentChar);
+    this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)));
+    this.socket.on('attack', this.opponentCast);
+    this.socket.on('turnSetup', this.updateTurn);
   }
   
+  // test = (state) => {
+  //   console.log('Socket Sent something');
+  //   // console.log(JSON.parse(id));
+  //   console.log(JSON.parse(state));
+  //   this.updateTurn();
+  // }
+
+
+  choosePosition = (e) => {
+    let numberified = Number(e.target.value);
+    this.setState({ attackPosition: numberified }, () => {
+        console.log(this.state.attackPosition);
+    });
+  }
+
   setOpponentChar = (char) => {
     this.setState({
       opponentChar: JSON.parse(char)
     })
   }
   chooseSpell = (spell) => {
-    // this.setState({currentSpell: spell}, () => {
-    //   console.log(this.state.currentSpell);
-    // })
-    this.setState({currentSpell: spell})
+    this.setState({currentSpell: spell}, () => {
+      console.log(this.state.currentSpell);
+    })
+    // this.setState({currentSpell: spell})
   }
 
   updateTurn = () => {
     this.setState({ myTurn: !this.state.myTurn}, () => {
-        console.log(this.state.myTurn)
+        console.log('Turn state is now: ', this.state.myTurn)
     })
   }
 
-  // opponentCast = () => {
-  //   if (opponent.attack.aim === this.props.state.myPosition) {
-  //     if (this.props.state.myDefence <= 0) {
-  //       // End game logic
-  //     }
-  //     this.props.takeDamage(opponent.attack.id);
-  //   }
-  // }
+  opponentCast = (state) => {
+    const { attackPosition, currentSpell} = JSON.parse(state);
+    if ( attackPosition === this.props.state.myPosition) {
+      if (this.state.myDefence <= 0) {
+        // End game logic
+        console.log('YOU LOST!');
+      }
+      this.takeDamage(currentSpell.power);
+    }
+    this.updateTurn();
+  }
+
+  takeDamage = (power) => {
+    this.setState({ myDefence: this.state.myDefence - power })
+  }
 
   endPlayerTurn = () => {
-    // if (this.state.myTurn) {
+    if (this.state.myTurn) {
       this.updateTurn();
-      this.props.newNotification(this.currentSpell);
+      this.props.newNotification(this.state.currentSpell.name);
+      this.socket.emit('attack', JSON.stringify(this.state));
       // console.log(this.state.myTurn, this.state.currentSpell);
-    // }
+    }
   }
 
     render() {
@@ -79,11 +106,31 @@ class Game extends Component {
           <button className='castSpellBtn' onClick={() => this.endPlayerTurn()}>
               Cast Spell
           </button>
+          <h1>{this.state.myDefence}</h1>
+          <div className="radio-pillbox">
+            <radiogroup>
+                <div>
+                    <input value="1" type="radio" name="radio-group" id="test" onClick={this.choosePosition}>
+                    </input>
+                    <label for="test" className="radio-label">1</label>
+                </div>
+                <div>
+                    <input value="2" type="radio" name="radio-group" id="test2" onClick={this.choosePosition}>
+                    </input>
+                    <label for="test2" className="radio-label">2</label>
+                </div>
+                <div>
+                    <input value="3" type="radio" name="radio-group" id="test3" onClick={this.choosePosition}>
+                    </input>
+                    <label for="test3" className="radio-label">3</label>
+                </div>
+            </radiogroup>
+          </div>
 
           <div>
             <h1>{ this.props.state.message }</h1>
             <button onClick={this.fetchData} >
-              Fetch Data
+              {this.state.myTurn ? 'Your turn' : 'Enemy Turn'}
             </button>
           </div>
         </div>
