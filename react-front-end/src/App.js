@@ -60,14 +60,6 @@ class App extends Component {
   fetchData = () => {
     return Promise.all([this.fetchWizards(), this.fetchSpells()]);
   }
-
-  takeDamage = (id) => {
-    for (let spell of this.state.spells) {
-      if (spell.id === id) {
-        this.setState({ myDefence: this.state.myDefence - spell.power })
-      }
-    }
-  }
   
   render() {
     return (

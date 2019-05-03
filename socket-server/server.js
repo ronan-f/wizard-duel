@@ -25,8 +25,16 @@ io.on("connection", socket => {
         character = char
     })
 
-    socket.on('attack', function(id) {
-        socket.broadcast.emit('attack', id);
+    socket.on('attack', function(spell) {
+        socket.broadcast.emit('attack', spell);
+    })
+
+    socket.on('defence', function(spell) {
+        socket.broadcast.emit('defence', spell)
+    })
+
+    socket.on('gameOver', function() {
+        socket.broadcast.emit('endGame');
     })
 
     socket.on('disconnect', function() {
