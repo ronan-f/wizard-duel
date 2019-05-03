@@ -42,14 +42,14 @@ class Game extends Component {
     })
   }
 
-  opponentCast = () => {
-    if (opponent.attack.aim === this.props.state.myPosition) {
-      if (this.props.state.myDefence <= 0) {
-        // End game logic
-      }
-      this.props.takeDamage(opponent.attack.id);
-    }
-  }
+  // opponentCast = () => {
+  //   if (opponent.attack.aim === this.props.state.myPosition) {
+  //     if (this.props.state.myDefence <= 0) {
+  //       // End game logic
+  //     }
+  //     this.props.takeDamage(opponent.attack.id);
+  //   }
+  // }
 
   endPlayerTurn = () => {
     // if (this.state.myTurn) {
