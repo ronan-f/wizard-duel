@@ -30,14 +30,14 @@ class Game extends Component {
     this.socket.on('turnSetup', this.updateTurn);
     this.socket.on('defence', this.updateTurn);
     this.socket.on('endGame', this.endGame);
+    this.socket.on('notification', this.incomingNotification )
   }
   
-  // test = (state) => {
-  //   console.log('Socket Sent something');
-  //   // console.log(JSON.parse(id));
-  //   console.log(JSON.parse(state));
-  //   this.updateTurn();
-  // }
+  incomingNotification = (notification) => {
+    let parsed = JSON.parse(notification)
+    const { user, spell } = parsed.notification;
+    this.props.newNotification(user, spell.name)
+  }
 
   endGame = () => {
     this.setState({ gameOver: true });
@@ -56,10 +56,10 @@ class Game extends Component {
     })
   }
   chooseSpell = (spell) => {
-    this.setState({currentSpell: spell}, () => {
-      console.log(this.state.currentSpell);
-    })
-    // this.setState({currentSpell: spell})
+    // this.setState({currentSpell: spell}, () => {
+    //   console.log(this.state.currentSpell);
+    // })
+    this.setState({currentSpell: spell})
   }
 
   updateTurn = () => {
@@ -98,8 +98,7 @@ class Game extends Component {
         this.socket.emit('attack', JSON.stringify(this.state));
       }
       this.updateTurn();
-      this.props.newNotification(this.state.currentSpell.name);
-      // console.log(this.state.myTurn, this.state.currentSpell);
+      this.socket.emit('notification', JSON.stringify({ notification: { user: this.props.state.currentUser, spell: this.state.currentSpell}}));
     }
   }
 
