@@ -14,6 +14,7 @@ class PlayerSpellList extends Component {
                         power={spell.power}
                         limit={spell.limit}
                         chooseSpell={this.props.chooseSpell}
+                        spellObj={spell}
                     />
                 </React.Fragment>
             );

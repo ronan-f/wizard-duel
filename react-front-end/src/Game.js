@@ -12,51 +12,63 @@ class Game extends Component {
     super(props)
     this.state = {
       opponentChar: null,
+      myDefence: 10,
       opponentImg: '',
-      myTurn: true,
+      myTurn: false,
       currentSpell: ''
     }
   }
   
   componentDidMount(){
     this.socket = socketIOClient('http://localhost:5000/');
-    this.socket.on('updateCharacter', this.setOpponentChar)
-    this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)))
+    this.socket.on('updateCharacter', this.setOpponentChar);
+    this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)));
+    this.socket.on('attack', this.test);
+    this.socket.on('turnSetup', this.updateTurn);
   }
   
+  test = (id) => {
+    console.log('Socket Sent something');
+    // console.log(JSON.parse(id));
+    console.log(JSON.parse(id));
+    this.updateTurn();
+  }
+
   setOpponentChar = (char) => {
     this.setState({
       opponentChar: JSON.parse(char)
     })
   }
   chooseSpell = (spell) => {
-    // this.setState({currentSpell: spell}, () => {
-    //   console.log(this.state.currentSpell);
-    // })
-    this.setState({currentSpell: spell})
+    this.setState({currentSpell: spell}, () => {
+      console.log(this.state.currentSpell);
+    })
+    // this.setState({currentSpell: spell})
   }
 
   updateTurn = () => {
     this.setState({ myTurn: !this.state.myTurn}, () => {
-        console.log(this.state.myTurn)
+        console.log('Turn state is now: ', this.state.myTurn)
     })
   }
 
-  opponentCast = () => {
-    if (opponent.attack.aim === this.props.state.myPosition) {
-      if (this.props.state.myDefence <= 0) {
-        // End game logic
-      }
-      this.props.takeDamage(opponent.attack.id);
-    }
-  }
+  // opponentCast = (spell) => {
+  //   const { id, aim } = JSON.parse(spell);
+  //   if ( aim === this.props.state.myPosition) {
+  //     if (this.props.state.myDefence <= 0) {
+  //       // End game logic
+  //     }
+  //     this.props.takeDamage(id);
+  //   }
+  // }
 
   endPlayerTurn = () => {
-    // if (this.state.myTurn) {
+    if (this.state.myTurn) {
       this.updateTurn();
-      this.props.newNotification(this.currentSpell);
+      this.props.newNotification(this.state.currentSpell.name);
+      this.socket.emit('attack', JSON.stringify(this.state.currentSpell));
       // console.log(this.state.myTurn, this.state.currentSpell);
-    // }
+    }
   }
 
     render() {
@@ -83,7 +95,7 @@ class Game extends Component {
           <div>
             <h1>{ this.props.state.message }</h1>
             <button onClick={this.fetchData} >
-              Fetch Data
+              {this.state.myTurn ? 'Your turn' : 'Enemy Turn'}
             </button>
           </div>
         </div>

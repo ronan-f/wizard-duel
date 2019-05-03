@@ -15,7 +15,6 @@ class App extends Component {
     this.state = {
       mySpells: [],
       myPosition: 2,
-      myDefence: 10,
       currentUser: '',
       spells: null,
       notifications: ['New player has joined', 'Player 1, your turn!'],
