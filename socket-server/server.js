@@ -33,6 +33,10 @@ io.on("connection", socket => {
         socket.broadcast.emit('defence', spell)
     })
 
+    socket.on('gameOver', function() {
+        socket.broadcast.emit('endGame');
+    })
+
     socket.on('disconnect', function() {
         numberOfClients --;
         console.log('Number of online clients:', numberOfClients)

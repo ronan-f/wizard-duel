@@ -16,17 +16,19 @@ class Game extends Component {
       opponentImg: '',
       myTurn: false,
       currentSpell: '',
-      attackPosition: null
+      attackPosition: null,
+      gameOver: false
     }
   }
   
   componentDidMount(){
-    this.socket = socketIOClient('http://localhost:5000/');
+    this.socket = socketIOClient('http://192.168.88.11:5000/');
     this.socket.on('updateCharacter', this.setOpponentChar);
     this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)));
     this.socket.on('attack', this.opponentCast);
     this.socket.on('turnSetup', this.updateTurn);
     this.socket.on('defence', this.updateTurn);
+    this.socket.on('endGame', this.endGame);
   }
   
   // test = (state) => {
@@ -36,6 +38,9 @@ class Game extends Component {
   //   this.updateTurn();
   // }
 
+  endGame = () => {
+    this.setState({ gameOver: true });
+  }
 
   choosePosition = (e) => {
     let numberified = Number(e.target.value);
@@ -66,7 +71,8 @@ class Game extends Component {
     const { attackPosition, currentSpell} = JSON.parse(state);
     if ( attackPosition === this.props.state.myPosition) {
       if (this.state.myDefence <= 0) {
-        // End game logic
+        this.setState({ gameOver: true });
+        this.socket.emit('gameOver');
         console.log('YOU LOST!');
       }
       this.takeDamage(currentSpell.power);
@@ -102,6 +108,7 @@ class Game extends Component {
       const { notifications, myCharacter } =  this.props.state
       return (
         <div className="App">
+        <h1>{this.state.gameOver ? "Game Over" : ""}</h1>
           <div className='infoBar'>
             < PlayerSpellList chooseSpell={this.chooseSpell} userSpells={this.props.state.mySpells}/>
             < NotificationBar notifications={notifications} />
