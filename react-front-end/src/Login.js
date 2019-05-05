@@ -19,7 +19,7 @@ class Login extends Component {
         return (
         this.props.state.currentUser ? (<Redirect to="/setup"/>) :
             <div className='login'>
-                <div className='left'>
+                <div className='leftLogin'>
                     <div className="speech-bubble">
                     <p><strong>Welcome to Hogwarts!</strong></p>
                     <p>To play, choose a character on the setup page. From there you'll have to spend your Mana wisely to come up with a spell and defence strategy. After your setup is complete you will be pitted against an opponent in a wizard duel to the death. Take turns casting spells until one of you emerges victorious. Good luck!</p>
@@ -33,7 +33,7 @@ class Login extends Component {
                         <label>
                             <input className='input' type="text" name="name" placeholder='Your name' onChange={(event) => this.setState({user: event.target.value})} />
                         </label>
-                        <input type="submit" variant="outline-light" className='login-button' value="Alohomora"/>
+                        <button type="submit" variant="outline-light" className='login-button' id='login-in-button' value="Alohomora">Alohomora</button>
                     </form>
                 </div>
             </div>

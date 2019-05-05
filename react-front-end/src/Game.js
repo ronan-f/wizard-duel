@@ -105,17 +105,17 @@ class Game extends Component {
       const { notifications, myCharacter } =  this.props.state
       return (
         <div className="App">
+          <div className='characterSection'>
+            < MyCharacter characterInfo={myCharacter} />
+            < spellAnimation />
+            < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.left_image : ''} />
+          </div>
         <h1>{this.state.gameOver ?<NavLink to='/setup'>GAME OVER!! Click to play again!</NavLink>: ""}</h1>
           <div className='infoBar'>
             < PlayerSpellList chooseSpell={this.chooseSpell} userSpells={this.props.state.mySpells}/>
             < NotificationBar notifications={notifications} />
           </div>
 
-          <div className='characterSection'>
-            < MyCharacter characterInfo={myCharacter} />
-            < spellAnimation />
-            < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.right_image : ''} />
-          </div>
 
           <button className='castSpellBtn' onClick={() => this.endPlayerTurn()}>
               Cast Spell

@@ -8,13 +8,13 @@ class Spell extends Component {
 
             <React.Fragment>
                 <tr className='spellsTable'>
-                    <td className='spellsTable'>{name}</td>
-                    <td className='spellsTable'>{description}</td>
-                    <td className='spellsTable'>{power}</td>
-                    <td className='spellsTable'>{limit}</td>
+                    <td className='spellName'>{name}</td>
+                    <td className='spellsDescription'>{description}</td>
+                    <td className='spellsPower'>{power}</td>
+                    <td className='spellsLimit'>{limit}</td>
                     <td>
                         <button className='spellChoiceBtn' onClick={() => this.props.chooseSpell(spellObj) }>
-                            Select
+                            Summon Magic!
                         </button>
                     </td>
                 </tr>

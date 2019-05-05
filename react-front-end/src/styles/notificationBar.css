@@ -2,6 +2,7 @@
     height: 300px;
     width: 45%;
     border-style: solid;
-    background:white;
+    /* background:white; */
     overflow: scroll;
+    color: white;
 }

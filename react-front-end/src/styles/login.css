@@ -1,16 +1,20 @@
 .login{
     display:flex;
 }
-.left{
+.leftLogin{
     width:50%;
+    padding-top: 20px;
+}
+.dumbledoreSpeech{
+    transform: scaleX(-1);
 }
 .instructions{
     height:400px;
 }
-.left .speech-bubble{
-    transform: scaleX(-1);
-}
+
 .right{
+    display: flex;
+    justify-items: center;
     width:50%;
 }
 .loginForm {
@@ -18,34 +22,24 @@
     flex-wrap: wrap;
     justify-content: center;
     color: white;
-    margin-top: 15%;
-}
-
-textarea{
-    height: 200px;
-    width: 100%;
+    margin-top: 35%;
+    margin-left: 10%;
 }
 
 .input{
+    flex-basis:100%;
     height: 50px;
     width:300px;
     font-size: 36px;
-    /* background:yellow; */
 }
-input.login-button{
-    font-size: 72px !important;
+#login-in-button{
+    flex-basis:50%;
+    margin-top: -60%;
+    background-color:#48ae94;
+    font-size: 24px;
     height: 50px;
+    width: 50px;
 }
-
-.welcomeMessage{
-    flex-wrap: wrap;
-    text-align: center;
-    color: yellow;
-    font-size: 80px;
-}
-
-
-
 
 body {
     background-image: url('/deathly-hallows-wallpapers-24.jpg');

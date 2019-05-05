@@ -1,6 +1,7 @@
 .spellsTable {
     border: 1px solid black;
-    background: white;
+    color: white;
+    /* background: white; */
 }
 
 #mainTable {

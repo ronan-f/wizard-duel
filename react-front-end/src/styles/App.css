@@ -9,7 +9,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -45,21 +45,30 @@
   display: flex;
   justify-content: space-evenly;
   margin: 5%;
-  background:rgb(248, 200, 111);
+  /* background:rgb(248, 200, 111); */
   /* opacity: .5; */
 }
 
 .characterSection {
-  margin: 5%;
+  /* margin: 5%; */
   display: flex;
   justify-content: space-between;
 }
 
 .health {
-  color: white;
+  /* color: white; */
   font-size: 30px;
   font-weight: 900;
   border-style: solid;
   padding: 3%;
-  background-color: black;
+}
+
+td .spellName{
+  color:white;
+  font-size: 72px;
+}
+
+.spellsTable{
+  width: 100%;
+  overflow: scroll;
 }

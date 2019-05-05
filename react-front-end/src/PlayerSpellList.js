@@ -23,15 +23,10 @@ class PlayerSpellList extends Component {
         return <table className='spellsTable' id='mainTable'>
                     <thead className='spellsTable'>
                         <tr>
-                            <th className='spellsTable'>Spell</th>
-                            <th className='spellsTable'>Description</th>
-                            <th className='spellsTable'>Value</th>
-                            <th className='spellsTable'>Casts</th>
-                            <th className='spellsTable'>Choose spell</th>
+                            <th className='spellsTable'>Select a Spell to cast</th>
                         </tr>
-
                     </thead>
-                    <tbody>
+                    <tbody classname='spellBody'>
                         {spellArray}
                     </tbody>
                 </table>
