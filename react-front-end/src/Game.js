@@ -5,6 +5,9 @@ import NotificationBar from "./NotificationBar.js";
 import MyCharacter from './MyCharacter.js'
 import OpponentCharacter from './OpponentCharacter.js';
 import socketIOClient from "socket.io-client";
+import { NavLink } from 'react-router-dom'
+
+
 
 
 class Game extends Component {
@@ -17,12 +20,12 @@ class Game extends Component {
       myTurn: false,
       currentSpell: '',
       attackPosition: null,
-      gameOver: false
+      gameOver: false,
+      currentUsers: 0
     }
   }
-  
+
   componentDidMount(){
-    // this.socket = socketIOClient('http://192.168.88.11:5000/');
     this.socket = socketIOClient('http://localhost:5000/');
     this.socket.on('updateCharacter', this.setOpponentChar);
     this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)));
@@ -31,12 +34,6 @@ class Game extends Component {
     this.socket.on('defence', this.updateTurn);
     this.socket.on('endGame', this.endGame);
     this.socket.on('notification', this.incomingNotification )
-  }
-  
-  incomingNotification = (notification) => {
-    let parsed = JSON.parse(notification)
-    const { user, spell } = parsed.notification;
-    this.props.newNotification(user, spell.name)
   }
 
   endGame = () => {
@@ -108,7 +105,7 @@ class Game extends Component {
       const { notifications, myCharacter } =  this.props.state
       return (
         <div className="App">
-        <h1>{this.state.gameOver ? "Game Over" : ""}</h1>
+        <h1>{this.state.gameOver ?<NavLink to='/setup'>GAME OVER!! Click to play again!</NavLink>: ""}</h1>
           <div className='infoBar'>
             < PlayerSpellList chooseSpell={this.chooseSpell} userSpells={this.props.state.mySpells}/>
             < NotificationBar notifications={notifications} />
