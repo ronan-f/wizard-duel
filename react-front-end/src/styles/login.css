@@ -1,3 +1,5 @@
+@media only screen and (min-width:1200px){
+
 .login{
     display:flex;
 }
@@ -45,3 +47,56 @@ body {
     background-image: url('/deathly-hallows-wallpapers-24.jpg');
 }
 
+}
+
+@media only screen and (min-width:768px){
+
+    .login{
+        display:flex;
+    }
+    .leftLogin{
+        width:50%;
+        padding-top: 20px;
+    }
+    .dumbledoreSpeech{
+        transform: scaleX(-1);
+    }
+    .instructions{
+        height:400px;
+    }
+    
+    .right{
+        display: flex;
+        justify-items: center;
+        width:50%;
+    }
+    .loginForm {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        color: white;
+        margin-top: 100%;
+        margin-left: 10%;
+    }
+    
+    .input{
+        flex-basis:100%;
+        height: 50px;
+        width:300px;
+        font-size: 36px;
+    }
+    #login-in-button{
+        flex-basis:50%;
+        margin-top: -50%;
+        background-color:#53bb87;
+        /* background-color:#48ae94; */
+        font-size: 24px;
+        height: 50px;
+        width: 50px;
+    }
+    
+    body {
+        background-image: url('/deathly-hallows-wallpapers-24.jpg');
+    }
+    
+    }
