@@ -106,21 +106,17 @@ class Game extends Component {
       return (
         <div className="App">
           <div className='characterSection'>
-            < MyCharacter characterInfo={myCharacter} />
-            < spellAnimation />
-            < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.left_image : ''} />
+            <div className='my-character-in-game'>
+              < MyCharacter characterInfo={myCharacter} />
+              <h1>Remaining Health:{this.state.myDefence}</h1>
+            </div>
+            <div className='spells-in-game'>
+              < spellAnimation />
+            </div>
+            <div className='my-opponent-in-game'>
+              < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.right_image : ''} />
+            </div>
           </div>
-        <h1>{this.state.gameOver ?<NavLink to='/setup'>GAME OVER!! Click to play again!</NavLink>: ""}</h1>
-          <div className='infoBar'>
-            < PlayerSpellList chooseSpell={this.chooseSpell} userSpells={this.props.state.mySpells}/>
-            < NotificationBar notifications={notifications} />
-          </div>
-
-
-          <button className='castSpellBtn' onClick={() => this.endPlayerTurn()}>
-              Cast Spell
-          </button>
-          <h1>{this.state.myDefence}</h1>
           <div className="radio-pillbox">
             <radiogroup>
                 <div>
@@ -140,6 +136,17 @@ class Game extends Component {
                 </div>
             </radiogroup>
           </div>
+        <h1>{this.state.gameOver ?<NavLink to='/setup'>GAME OVER!! Click to play again!</NavLink>: ""}</h1>
+          <div className='infoBar'>
+            < PlayerSpellList chooseSpell={this.chooseSpell} userSpells={this.props.state.mySpells}/>
+            < NotificationBar notifications={notifications} />
+          </div>
+
+
+          <button className='castSpellBtn' onClick={() => this.endPlayerTurn()}>
+              Cast Spell
+          </button>
+
 
           <div>
             <h1>{ this.props.state.message }</h1>
