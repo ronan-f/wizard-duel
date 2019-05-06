@@ -34,7 +34,7 @@ class Game extends Component {
     this.socket.on('turnSetup', this.updateTurn);
     this.socket.on('defence', this.updateTurn);
     this.socket.on('endGame', this.endGame);
-    this.socket.on('notification', this.incomingNotification ),
+    this.socket.on('notification', this.incomingNotification );
     this.socket.on('disconnected', this.removeCharacter);
   }
 
