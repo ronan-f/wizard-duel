@@ -34,7 +34,7 @@ class Game extends Component {
     this.socket.on('turnSetup', this.updateTurn);
     this.socket.on('defence', this.updateTurn);
     this.socket.on('endGame', this.endGame);
-    this.socket.on('notification', this.incomingNotification ),
+    this.socket.on('notification', this.incomingNotification );
     this.socket.on('disconnected', this.removeCharacter);
   }
 
@@ -98,6 +98,10 @@ class Game extends Component {
     }
   }
 
+  removeCharacter = () => {
+    this.setState({ opponentChar: null });
+  }
+
     render() {
       const { notifications, myCharacter } =  this.props.state
       return (
@@ -109,6 +113,7 @@ class Game extends Component {
             </div>
             <div className='spells-in-game'>
               <SpellAnimation currentSpell={this.state.currentSpell} />
+              <h1 className='waiting'>{!this.state.opponentChar ? 'Waiting for player..' : ''}</h1>
             </div>
             <div className='my-opponent-in-game'>
               < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.right_image : ''} />

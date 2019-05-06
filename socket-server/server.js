@@ -45,6 +45,7 @@ io.on("connection", socket => {
         numberOfClients --;
         socket.broadcast.emit('disconnected')
         console.log('Number of online clients:', numberOfClients)
+        socket.broadcast.emit('disconnected')
     })
 });
 
