@@ -34,7 +34,8 @@ class Game extends Component {
     this.socket.on('turnSetup', this.updateTurn);
     this.socket.on('defence', this.updateTurn);
     this.socket.on('endGame', this.endGame);
-    this.socket.on('notification', this.incomingNotification )
+    this.socket.on('notification', this.incomingNotification ),
+    this.socket.on('disconnected', this.removeCharacter);
   }
 
   endGame = () => {
@@ -92,7 +93,7 @@ class Game extends Component {
       } else {
         this.socket.emit('attack', JSON.stringify(this.state));
       }
-      this.updateTurn();
+      // this.updateTurn();
       this.socket.emit('notification', JSON.stringify({ notification: { user: this.props.state.currentUser, spell: this.state.currentSpell}}));
     }
   }

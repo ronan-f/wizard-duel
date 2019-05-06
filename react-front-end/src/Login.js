@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './styles/login.css'
 import { Redirect } from 'react-router'
 
-
 class Login extends Component {
     constructor(props) {
         super(props)
