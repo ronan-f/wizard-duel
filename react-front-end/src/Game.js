@@ -4,6 +4,7 @@ import PlayerSpellList from "./PlayerSpellList.js";
 import NotificationBar from "./NotificationBar.js";
 import MyCharacter from './MyCharacter.js'
 import OpponentCharacter from './OpponentCharacter.js';
+import SpellAnimation from './SpellAnimation.js'
 import socketIOClient from "socket.io-client";
 import { NavLink } from 'react-router-dom'
 
@@ -26,7 +27,7 @@ class Game extends Component {
   }
 
   componentDidMount(){
-    this.socket = socketIOClient('http://localhost:5000/');
+    this.socket = socketIOClient('http://192.168.88.142:5000/');
     this.socket.on('updateCharacter', this.setOpponentChar);
     this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)));
     this.socket.on('attack', this.opponentCast);
@@ -94,7 +95,7 @@ class Game extends Component {
       } else {
         this.socket.emit('attack', JSON.stringify(this.state));
       }
-      this.updateTurn();
+      // this.updateTurn();
       this.socket.emit('notification', JSON.stringify({ notification: { user: this.props.state.currentUser, spell: this.state.currentSpell}}));
     }
   }
@@ -111,7 +112,7 @@ class Game extends Component {
               <h1>Remaining Health:{this.state.myDefence}</h1>
             </div>
             <div className='spells-in-game'>
-              < spellAnimation />
+              <SpellAnimation currentSpell={this.state.currentSpell} />
             </div>
             <div className='my-opponent-in-game'>
               < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.right_image : ''} />
@@ -122,17 +123,17 @@ class Game extends Component {
                 <div>
                     <input value="1" type="radio" name="radio-group" id="test" onClick={this.choosePosition}>
                     </input>
-                    <label for="test" className="radio-label">1</label>
+                    <label for="test" className="radio-label">🧙‍♀️ Cast spell to postion 1 </label>
                 </div>
                 <div>
                     <input value="2" type="radio" name="radio-group" id="test2" onClick={this.choosePosition}>
                     </input>
-                    <label for="test2" className="radio-label">2</label>
+                    <label for="test2" className="radio-label">🧙‍♂️ Cast spell to postion 2</label>
                 </div>
                 <div>
                     <input value="3" type="radio" name="radio-group" id="test3" onClick={this.choosePosition}>
                     </input>
-                    <label for="test3" className="radio-label">3</label>
+                    <label for="test3" className="radio-label">🧙‍♀️ Cast spell to postion 3</label>
                 </div>
             </radiogroup>
           </div>
@@ -141,11 +142,6 @@ class Game extends Component {
             < PlayerSpellList chooseSpell={this.chooseSpell} userSpells={this.props.state.mySpells}/>
             < NotificationBar notifications={notifications} />
           </div>
-
-
-          <button className='castSpellBtn' onClick={() => this.endPlayerTurn()}>
-              Cast Spell
-          </button>
 
 
           <div>

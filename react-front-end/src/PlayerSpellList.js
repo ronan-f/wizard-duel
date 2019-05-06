@@ -7,29 +7,20 @@ class PlayerSpellList extends Component {
 
         const spellArray = this.props.userSpells.map((spell) => {
             return(
-                <React.Fragment>
-                    <Spell
-                        name={spell.name}
-                        description={spell.description}
-                        power={spell.power}
-                        limit={spell.limit}
-                        chooseSpell={this.props.chooseSpell}
-                        spellObj={spell}
-                    />
-                </React.Fragment>
+                <Spell
+                    name={spell.name}
+                    description={spell.description}
+                    power={spell.power}
+                    limit={spell.limit}
+                    chooseSpell={this.props.chooseSpell}
+                    spellObj={spell}
+                />
             );
         });
 
-        return <table className='spellsTable' id='mainTable'>
-                    <thead className='spellsTable'>
-                        <tr>
-                            <th className='spellsTable'>Select a Spell to cast</th>
-                        </tr>
-                    </thead>
-                    <tbody classname='spellBody'>
-                        {spellArray}
-                    </tbody>
-                </table>
+        return <div className='spellsTable' id='mainTable'>
+                {spellArray}
+        </div>
 
     }
 }

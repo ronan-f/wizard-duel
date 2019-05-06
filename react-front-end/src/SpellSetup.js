@@ -9,7 +9,7 @@ class SpellSetup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            playerMana: 10,
+            playerMana: 1000000,
             playerPosition: 2,
             chosenSpells: []
         }

@@ -32,15 +32,6 @@
   }
 }
 
-.castSpellBtn {
-  height: 60px;
-  width: 150px;
-  background-color: darkblue;
-  color: white;
-  font-size: 20px;
-}
-
-
 .infoBar {
   display: flex;
   justify-content: space-evenly;
@@ -70,5 +61,22 @@ td .spellName{
 
 .spellsTable{
   width: 100%;
+  height: 50px;
   overflow: scroll;
+  column-count: 4;
+}
+
+.spells-in-game{
+  width:100%;
+  height: 500px;
+  /* background:pink; */
+}
+
+.castSpells{
+  width: 130%;
+  height: 400px;
+}
+
+.my-opponent-in-game{
+  z-index:-1;
 }
