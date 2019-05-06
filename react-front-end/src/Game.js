@@ -16,12 +16,10 @@ class Game extends Component {
     this.state = {
       opponentChar: null,
       myDefence: 10,
-      opponentImg: '',
       myTurn: false,
       currentSpell: '',
       attackPosition: null,
-      gameOver: false,
-      currentUsers: 0
+      gameOver: false
     }
   }
 
@@ -33,16 +31,20 @@ class Game extends Component {
     this.socket.on('turnSetup', this.updateTurn);
     this.socket.on('defence', this.updateTurn);
     this.socket.on('endGame', this.endGame);
+    this.socket.on('disconnected', this.removeCharacter);
   }
 
   endGame = () => {
     this.setState({ gameOver: true });
   }
 
+  removeCharacter = () => {
+    this.setState({ opponentChar: null });
+  }
+
   choosePosition = (e) => {
     let numberified = Number(e.target.value);
     this.setState({ attackPosition: numberified }, () => {
-        console.log(this.state.attackPosition);
     });
   }
 
@@ -53,14 +55,12 @@ class Game extends Component {
   }
   chooseSpell = (spell) => {
     this.setState({currentSpell: spell}, () => {
-      console.log(this.state.currentSpell);
     })
     // this.setState({currentSpell: spell})
   }
 
   updateTurn = () => {
     this.setState({ myTurn: !this.state.myTurn}, () => {
-        console.log('Turn state is now: ', this.state.myTurn)
     })
   }
 
@@ -70,7 +70,6 @@ class Game extends Component {
       if (this.state.myDefence <= 0) {
         this.setState({ gameOver: true });
         this.socket.emit('gameOver');
-        console.log('YOU LOST!');
       }
       this.takeDamage(currentSpell.power);
     }
@@ -100,6 +99,7 @@ class Game extends Component {
   }
 
     render() {
+      console.log('this.state.opponentchar', this.state.opponentChar)
 
       // console.log('current state', this.props.state)
       const { notifications, myCharacter } =  this.props.state
@@ -114,6 +114,7 @@ class Game extends Component {
           <div className='characterSection'>
             < MyCharacter characterInfo={myCharacter} />
             < spellAnimation />
+            <h1 className='waiting'>{!this.state.opponentChar ? 'Waiting for player..' : ''}</h1>
             < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.right_image : ''} />
           </div>
 

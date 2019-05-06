@@ -11,12 +11,9 @@ class SpellSetup extends Component {
         this.state = {
             playerMana: 10,
             playerPosition: 2,
-            chosenSpells: []
+            chosenSpells: [{casts: 100, affect_opponent: false, name: 'Confrigo', cost: 0, power: 2, id: 1, description: 'fiery cast dealing 2 damage to your opponent'}]
         }
     }
-    // choosePosition = (positionNumber) => {
-    //     this.setState({ playerPosition: positionNumber });
-    // }
 
     choosePosition = (e) => {
         let numberified = Number(e.target.value);
@@ -30,9 +27,6 @@ class SpellSetup extends Component {
                 let updatedSpells = this.state.chosenSpells;
                 updatedSpells.push(spell);
                 this.setState({ chosenSpell: updatedSpells, playerMana: (this.state.playerMana - spell.cost) })
-                // console.log("Found the spell");
-                // console.log('========');
-                // console.log('BOOYA', this.state);
             }
         }
     }
@@ -52,10 +46,11 @@ class SpellSetup extends Component {
 
     render() {
 
-        const spellArray = this.props.state.spells.map((spell) => {
+        const spellArray = this.props.state.spells.filter(spell => spell.unlock_level === 1).map((spell) => {
             return(
                 <React.Fragment>
                     <AvailableSpell
+                        key={Math.random()}
                         id={spell.id}
                         name={spell.name}
                         description={spell.description}
@@ -104,17 +99,17 @@ class SpellSetup extends Component {
                             <div>
                                 <input value="1" type="radio" name="radio-group" id="test" onClick={this.choosePosition}>
                                 </input>
-                                <label for="test" className="radio-label">1</label>
+                                <label htmlFor="test" className="radio-label">1</label>
                             </div>
                             <div>
                                 <input value="2" type="radio" name="radio-group" id="test2" onClick={this.choosePosition}>
                                 </input>
-                                <label for="test2" className="radio-label">2</label>
+                                <label htmlFor="test2" className="radio-label">2</label>
                             </div>
                             <div>
                                 <input value="3" type="radio" name="radio-group" id="test3" onClick={this.choosePosition}>
                                 </input>
-                                <label for="test3" className="radio-label">3</label>
+                                <label htmlFor="test3" className="radio-label">3</label>
                             </div>
                         </radiogroup>
                     </div>
