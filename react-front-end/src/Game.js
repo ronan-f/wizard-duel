@@ -101,7 +101,6 @@ class Game extends Component {
     render() {
       console.log('this.state.opponentchar', this.state.opponentChar)
 
-      // console.log('current state', this.props.state)
       const { notifications, myCharacter } =  this.props.state
       return (
         <div className="App">
