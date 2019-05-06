@@ -36,8 +36,9 @@ class App extends Component {
     this.setState({ mySpells: spells, myPosition: position })
   }
 
-  newNotification = (spell) => {
-    this.setState({notifications: this.state.notifications.concat(`Player 1 used ${spell}`)})
+  newNotification = (user, spell) => {
+    console.log(`${user} and ${spell}`);
+    this.setState({notifications: this.state.notifications.concat(`${user} has cast ${spell}.`)})
   }
 
   newUser = (user) => {

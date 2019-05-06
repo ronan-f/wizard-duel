@@ -4,6 +4,7 @@ import PlayerSpellList from "./PlayerSpellList.js";
 import NotificationBar from "./NotificationBar.js";
 import MyCharacter from './MyCharacter.js'
 import OpponentCharacter from './OpponentCharacter.js';
+import SpellAnimation from './SpellAnimation.js'
 import socketIOClient from "socket.io-client";
 import { NavLink } from 'react-router-dom'
 
@@ -16,10 +17,12 @@ class Game extends Component {
     this.state = {
       opponentChar: null,
       myDefence: 10,
+      opponentImg: '',
       myTurn: false,
       currentSpell: '',
       attackPosition: null,
-      gameOver: false
+      gameOver: false,
+      currentUsers: 0
     }
   }
 
@@ -31,6 +34,7 @@ class Game extends Component {
     this.socket.on('turnSetup', this.updateTurn);
     this.socket.on('defence', this.updateTurn);
     this.socket.on('endGame', this.endGame);
+    this.socket.on('notification', this.incomingNotification ),
     this.socket.on('disconnected', this.removeCharacter);
   }
 
@@ -38,13 +42,10 @@ class Game extends Component {
     this.setState({ gameOver: true });
   }
 
-  removeCharacter = () => {
-    this.setState({ opponentChar: null });
-  }
-
   choosePosition = (e) => {
     let numberified = Number(e.target.value);
     this.setState({ attackPosition: numberified }, () => {
+        console.log(this.state.attackPosition);
     });
   }
 
@@ -54,13 +55,12 @@ class Game extends Component {
     })
   }
   chooseSpell = (spell) => {
-    this.setState({currentSpell: spell}, () => {
-    })
-    // this.setState({currentSpell: spell})
+    this.setState({currentSpell: spell})
   }
 
   updateTurn = () => {
     this.setState({ myTurn: !this.state.myTurn}, () => {
+        console.log('Turn state is now: ', this.state.myTurn)
     })
   }
 
@@ -70,6 +70,7 @@ class Game extends Component {
       if (this.state.myDefence <= 0) {
         this.setState({ gameOver: true });
         this.socket.emit('gameOver');
+        console.log('YOU LOST!');
       }
       this.takeDamage(currentSpell.power);
     }
@@ -92,54 +93,52 @@ class Game extends Component {
       } else {
         this.socket.emit('attack', JSON.stringify(this.state));
       }
-      this.updateTurn();
-      this.props.newNotification(this.state.currentSpell.name);
-      // console.log(this.state.myTurn, this.state.currentSpell);
+      // this.updateTurn();
+      this.socket.emit('notification', JSON.stringify({ notification: { user: this.props.state.currentUser, spell: this.state.currentSpell}}));
     }
   }
 
     render() {
-      console.log('this.state.opponentchar', this.state.opponentChar)
-
       const { notifications, myCharacter } =  this.props.state
       return (
         <div className="App">
+          <div className='characterSection'>
+            <div className='my-character-in-game'>
+              < MyCharacter characterInfo={myCharacter} />
+              <h1>Remaining Health:{this.state.myDefence}</h1>
+            </div>
+            <div className='spells-in-game'>
+              <SpellAnimation currentSpell={this.state.currentSpell} />
+            </div>
+            <div className='my-opponent-in-game'>
+              < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.right_image : ''} />
+            </div>
+          </div>
+          <div className="radio-pillbox">
+            <radiogroup>
+                <div>
+                    <input value="1" type="radio" name="radio-group" id="test" onClick={this.choosePosition}>
+                    </input>
+                    <label for="test" className="radio-label">🧙‍♀️ Cast spell to postion 1 </label>
+                </div>
+                <div>
+                    <input value="2" type="radio" name="radio-group" id="test2" onClick={this.choosePosition}>
+                    </input>
+                    <label for="test2" className="radio-label">🧙‍♂️ Cast spell to postion 2</label>
+                </div>
+                <div>
+                    <input value="3" type="radio" name="radio-group" id="test3" onClick={this.choosePosition}>
+                    </input>
+                    <label for="test3" className="radio-label">🧙‍♀️ Cast spell to postion 3</label>
+                </div>
+            </radiogroup>
+          </div>
         <h1>{this.state.gameOver ?<NavLink to='/setup'>GAME OVER!! Click to play again!</NavLink>: ""}</h1>
           <div className='infoBar'>
             < PlayerSpellList chooseSpell={this.chooseSpell} userSpells={this.props.state.mySpells}/>
             < NotificationBar notifications={notifications} />
           </div>
 
-          <div className='characterSection'>
-            < MyCharacter characterInfo={myCharacter} />
-            < spellAnimation />
-            <h1 className='waiting'>{!this.state.opponentChar ? 'Waiting for player..' : ''}</h1>
-            < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.right_image : ''} />
-          </div>
-
-          <button className='castSpellBtn' onClick={() => this.endPlayerTurn()}>
-              Cast Spell
-          </button>
-          <h1>{this.state.myDefence}</h1>
-          <div className="radio-pillbox">
-            <radiogroup>
-                <div>
-                    <input value="1" type="radio" name="radio-group" id="test" onClick={this.choosePosition}>
-                    </input>
-                    <label for="test" className="radio-label">1</label>
-                </div>
-                <div>
-                    <input value="2" type="radio" name="radio-group" id="test2" onClick={this.choosePosition}>
-                    </input>
-                    <label for="test2" className="radio-label">2</label>
-                </div>
-                <div>
-                    <input value="3" type="radio" name="radio-group" id="test3" onClick={this.choosePosition}>
-                    </input>
-                    <label for="test3" className="radio-label">3</label>
-                </div>
-            </radiogroup>
-          </div>
 
           <div>
             <h1>{ this.props.state.message }</h1>

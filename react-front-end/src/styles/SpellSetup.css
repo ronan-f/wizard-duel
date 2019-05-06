@@ -144,13 +144,16 @@ h5{
     position:center;
     padding:4px 1.5em;
 }
-
+/* h4{
+    display:none;
+} */
 h3{
    font-size:24px;
 }
 p{
     background:none;
     font-style: italic;
+    font-size: 24px;
     padding-left: 4%;
 }
 

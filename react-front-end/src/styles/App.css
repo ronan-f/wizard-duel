@@ -9,7 +9,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -32,38 +32,51 @@
   }
 }
 
-.castSpellBtn {
-  height: 60px;
-  width: 150px;
-  background-color: darkblue;
-  color: white;
-  font-size: 20px;
-}
-
-
 .infoBar {
   display: flex;
   justify-content: space-evenly;
   margin: 5%;
-  background:rgb(248, 200, 111);
+  /* background:rgb(248, 200, 111); */
   /* opacity: .5; */
 }
 
 .characterSection {
-  margin: 5%;
+  /* margin: 5%; */
   display: flex;
   justify-content: space-between;
 }
 
 .health {
-  color: white;
+  /* color: white; */
   font-size: 30px;
   font-weight: 900;
   border-style: solid;
   padding: 3%;
-  background-color: black;
 }
 
-.waiting {
-  color: white;
+td .spellName{
+  color:white;
+  font-size: 72px;
+}
+
+.spellsTable{
+  width: 100%;
+  height: 50px;
+  overflow: scroll;
+  column-count: 4;
+}
+
+.spells-in-game{
+  width:100%;
+  height: 500px;
+  /* background:pink; */
+}
+
+.castSpells{
+  width: 130%;
+  height: 400px;
+}
+
+.my-opponent-in-game{
+  z-index:-1;
 }

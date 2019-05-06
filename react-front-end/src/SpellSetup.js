@@ -9,7 +9,7 @@ class SpellSetup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            playerMana: 10,
+            playerMana: 1000000,
             playerPosition: 2,
             chosenSpells: [{casts: 100, affect_opponent: false, name: 'Confrigo', cost: 0, power: 2, id: 1, description: 'fiery cast dealing 2 damage to your opponent'}]
         }

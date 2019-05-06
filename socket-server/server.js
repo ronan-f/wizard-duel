@@ -37,6 +37,10 @@ io.on("connection", socket => {
         socket.broadcast.emit('endGame');
     })
 
+    socket.on('notification', function(notification) {
+        io.emit('notification', notification)
+    })
+
     socket.on('disconnect', function() {
         numberOfClients --;
         socket.broadcast.emit('disconnected')
