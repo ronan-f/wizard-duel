@@ -4,10 +4,10 @@ import React, { Component } from 'react';
 
 class SpellAnimation extends Component {
     render() {
-        // const { animation } = this.props.currentSpell
         return(
           <div className='spellAnimationDiv'>
-              <img className='castSpells' src={this.props.currentSpell.animation} alt='myspell'/>
+          {/* className={this.props.spellDirection} */}
+              <img src={this.props.currentSpell} alt='myspell'/>
           </div>
         )
     }

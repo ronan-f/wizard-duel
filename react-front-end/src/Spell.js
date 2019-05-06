@@ -6,7 +6,8 @@ class Spell extends Component {
         const {  spellObj, name, description, power, limit } = this.props;
         return (
             <div className='spellsTable'>
-                <button className='spellChoiceBtn' onClick={() => this.props.chooseSpell(spellObj) && this.endPlayerTurn()}>
+                <button className='spellChoiceBtn' onClick={() =>{
+                    this.props.chooseSpell(spellObj)}}>
                 Cast {name}!
                 <br /> Power:{power}
                 </button>
