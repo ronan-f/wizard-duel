@@ -95,7 +95,7 @@ class Game extends Component {
       } else {
         this.socket.emit('attack', JSON.stringify(this.state));
       }
-      // this.updateTurn();
+      this.updateTurn();
       this.socket.emit('notification', JSON.stringify({ notification: { user: this.props.state.currentUser, spell: this.state.currentSpell}}));
     }
   }
