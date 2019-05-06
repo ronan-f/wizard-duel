@@ -27,7 +27,7 @@ class Game extends Component {
   }
 
   componentDidMount(){
-    this.socket = socketIOClient('http://192.168.88.142:5000/');
+    this.socket = socketIOClient('http://localhost:5000/');
     this.socket.on('updateCharacter', this.setOpponentChar);
     this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)));
     this.socket.on('attack', this.opponentCast);
@@ -54,9 +54,6 @@ class Game extends Component {
     })
   }
   chooseSpell = (spell) => {
-    // this.setState({currentSpell: spell}, () => {
-    //   console.log(this.state.currentSpell);
-    // })
     this.setState({currentSpell: spell})
   }
 
@@ -101,8 +98,6 @@ class Game extends Component {
   }
 
     render() {
-
-      // console.log('current state', this.props.state)
       const { notifications, myCharacter } =  this.props.state
       return (
         <div className="App">
