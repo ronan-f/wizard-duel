@@ -1,16 +1,16 @@
 .spellsTable {
     display: flex;
-    border: 1px solid black;
+    flex-wrap:wrap;
     color: white;
-    columns: 2;
-    height: 80px;
+    columns: 3;
+    height: 100px;
+    width: auto;
     overflow-y: scroll;
-    /* background: white; */
 }
 
 .spellChoiceBtn {
     flex-wrap: wrap;
-    height: 80px;
+    height: 90px;
     width: 300px;
     background-color: rgb(28, 189, 28);
     border-radius: 50%;
@@ -23,4 +23,11 @@
 
 .spellName{
     font-size: 24px;
-  }
+}
+
+div.radio-pillbox{
+    width:25;
+    position:right;
+    padding:0;
+}
+

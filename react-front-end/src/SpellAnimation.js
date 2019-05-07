@@ -7,7 +7,7 @@ class SpellAnimation extends Component {
         return(
           <div className='spellAnimationDiv'>
           {/* className={this.props.spellDirection} */}
-              <img src={this.props.currentSpell} alt='myspell'/>
+              <img className='spellAnimationLimit' src={this.props.currentSpell} alt='myspell'/>
           </div>
         )
     }

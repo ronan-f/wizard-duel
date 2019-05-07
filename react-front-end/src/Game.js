@@ -125,23 +125,29 @@ class Game extends Component {
               < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.right_image : ''} />
             </div>
           </div>
-          <div className="radio-pillbox">
+          <div className="radio-pillbox2">
             <radiogroup>
-                <div>
-                    <input value="1" type="radio" name="radio-group" id="test" onClick={this.choosePosition}>
-                    </input>
-                    <label for="test" className="radio-label">🧙‍♀️ Cast spell to postion 1 </label>
-                </div>
-                <div>
-                    <input value="2" type="radio" name="radio-group" id="test2" onClick={this.choosePosition}>
-                    </input>
-                    <label for="test2" className="radio-label">🧙‍♂️ Cast spell to postion 2</label>
-                </div>
-                <div>
-                    <input value="3" type="radio" name="radio-group" id="test3" onClick={this.choosePosition}>
-                    </input>
-                    <label for="test3" className="radio-label">🧙‍♀️ Cast spell to postion 3</label>
-                </div>
+              <div>
+                  <label for="test3" className="radio-label">{this.state.myTurn ? 'Your turn, please aim your spell:' : ''}</label>
+              </div>
+              <div>
+                  <input value="1" type="radio" name="radio-group" id="test" onClick={this.choosePosition}>
+                  </input>
+                  <label for="test" className="radio-label">
+                    {this.state.myTurn ? '🧙‍♀️ Postion 1' : ''}
+                  </label>
+              </div>
+              <div>
+                  <input value="2" type="radio" name="radio-group" id="test2" onClick={this.choosePosition}>
+                  </input>
+                  <label for="test2" className="radio-label">{this.state.myTurn ? '🧙‍♂️ Postion 2' : ''}
+                  </label>
+              </div>
+              <div>
+                  <input value="3" type="radio" name="radio-group" id="test3" onClick={this.choosePosition}>
+                  </input>
+                  <label for="test3" className="radio-label">{this.state.myTurn ? '🧙‍♀️Postion 3' : 'Your Opponent is casting'}</label>
+              </div>
             </radiogroup>
           </div>
         <h1>{this.state.gameOver ?<NavLink to='/setup'>GAME OVER!! Click to play again!</NavLink>: ""}</h1>
@@ -152,12 +158,12 @@ class Game extends Component {
           </div>
 
 
-          <div>
-            <h1>{ this.props.state.message }</h1>
+          {/* <div>
+            <h1>{ this.props.state.message }, {this.state.myTurn ? 'Your turn' : 'Enemy Turn'}</h1>
             <button onClick={this.fetchData} >
               {this.state.myTurn ? 'Your turn' : 'Enemy Turn'}
             </button>
-          </div>
+          </div> */}
         </div>
 
       );

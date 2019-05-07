@@ -45,7 +45,7 @@ class SpellSetup extends Component {
 
     render() {
         const filteredSpells = this.props.state.spells.filter(spell => spell.unlock_level
-            <= 3)
+            !== 1)
 
         const spellArray = filteredSpells.map((spell) => {
             return(
