@@ -1,4 +1,4 @@
-@media only screen and (min-width:320px) and (max-width:767px) and (orientation:landscape){
+@media only screen and (min-width:320px) and (max-width:812px) and (orientation:landscape){
     .character-container{
         display: flex;
         justify-content: space-between;
@@ -13,10 +13,78 @@
 
     .textInfo {
         display:none;
-        /* padding-top: 1%;
-        padding-bottom: 1%;
-        font-size: 18px;
-        color: white; */
+    }
+
+    .charBtn {
+        display: flex;
+        justify-content: space-around;
+    }
+    .opponentDiv{
+        /* flex-basis: 100%; */
+        height:300px;
+    }
+
+    .armyName{
+        /* display:none; */
+        width:100%;
+        color: white;
+        text-align: center;
+        font-size: 1px;
+        font-style: normal;
+    }
+}
+
+@media only screen and (min-width:813px) and (max-width:1023px) and (orientation:landscape){
+    .character-container{
+        display: flex;
+        justify-content: space-between;
+        width:100%;
+    }
+    .left-wizard-selection{
+        width:100%;
+    }
+    .right-wizard-selection{
+        width:100%;
+    }
+
+    .textInfo {
+        display:none;
+    }
+
+    .charBtn {
+        display: flex;
+        justify-content: space-around;
+    }
+    .opponentDiv{
+        /* flex-basis: 100%; */
+        height:300px;
+    }
+
+    .armyName{
+        /* display:none; */
+        width:100%;
+        color: white;
+        text-align: center;
+        font-size: 1px;
+        font-style: normal;
+    }
+}
+
+@media only screen and (min-width:1024px) and (max-width:1999px) and (orientation:landscape){
+    .character-container{
+        display: flex;
+        justify-content: space-between;
+        width:100%;
+    }
+    .left-wizard-selection{
+        width:100%;
+    }
+    .right-wizard-selection{
+        width:100%;
+    }
+
+    .textInfo {
+        display:none;
     }
 
     .charBtn {
