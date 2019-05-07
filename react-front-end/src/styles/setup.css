@@ -1,4 +1,38 @@
-@media only screen and (min-width:320px) and (max-width:812px) and (orientation:landscape){
+@media only screen and (min-width:0px) and (max-width:830px) and (orientation:portrait){
+    .character-container{
+        display: none;
+        justify-content: space-between;
+        width:100%;
+    }
+    .left-wizard-selection{
+        width:100%;
+    }
+    .right-wizard-selection{
+        width:100%;
+    }
+
+    .textInfo {
+        color:white;
+    }
+
+    .charBtn {
+        display: flex;
+        justify-content: space-around;
+    }
+    .opponentDiv{
+        height:300px;
+    }
+
+    .armyName{
+        width:100%;
+        color: white;
+        text-align: center;
+        font-size: 1px;
+        font-style: normal;
+    }
+}
+
+@media only screen and (min-width:320px) and (max-width:830px) and (orientation:landscape){
     .character-container{
         display: flex;
         justify-content: space-between;
@@ -20,12 +54,10 @@
         justify-content: space-around;
     }
     .opponentDiv{
-        /* flex-basis: 100%; */
         height:300px;
     }
 
     .armyName{
-        /* display:none; */
         width:100%;
         color: white;
         text-align: center;
@@ -56,12 +88,10 @@
         justify-content: space-around;
     }
     .opponentDiv{
-        /* flex-basis: 100%; */
         height:300px;
     }
 
     .armyName{
-        /* display:none; */
         width:100%;
         color: white;
         text-align: center;
@@ -92,12 +122,10 @@
         justify-content: space-around;
     }
     .opponentDiv{
-        /* flex-basis: 100%; */
         height:300px;
     }
 
     .armyName{
-        /* display:none; */
         width:100%;
         color: white;
         text-align: center;
@@ -106,41 +134,36 @@
     }
 }
 
-@media only screen and (min-width:1025px) and (max-width:20000px){
-    .character-container{
+@media only screen and (min-width:1025px){
+    .characterContainer{
         display: flex;
         justify-content: space-around;
-        width:100%;
     }
-    .left-wizard-selection{
-        width:100%;
-    }
-    .right-wizard-selection{
-        width:100%;
-        /* display:flex; */
-    }
-
-
     .textInfo {
         padding-top: 2%;
         padding-bottom: 2%;
         color: white;
     }
-
     .charBtn {
         display: flex;
         justify-content: space-around;
     }
     .opponentDiv{
-        /* flex-basis: 100%; */
+        /* padding-top: 2%; */
         height:300px;
     }
-
-    .armyName{
-        width:100%;
-        color: white;
+    .left{
+        transform: scaleX(-1);
+    }
+    .leftCharacter{
+        background:white;
+        transform: scaleX(-1);
+    }
+    p{
+        background: white;
         text-align: center;
-        font-size: 36px;
-        font-style: normal;
+        font-size: 24px;
+        margin: 0;
+        padding: 10px;
     }
 }

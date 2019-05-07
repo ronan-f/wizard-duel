@@ -24,7 +24,6 @@
         display:flex;
         justify-content: space-around;
     }
-    
     .dumbledoreSpeech img{
         /* margin-left: 20%; */
         width: 40vw;
@@ -45,6 +44,10 @@
         width: inherit;
         font-family: 'Oswald', Helvetica Neue;
         margin: 0 0 10px;
+        overflow: scroll;
+        max-height: 40vh;
+        margin-top:-0vh;
+
     }
 
     .right{
@@ -85,68 +88,6 @@
     }
 
 }
-
-/* @media only screen and (min-width:813px) and (max-width: 1023px){
-
-    .login{
-        display:flex;
-    }
-    .leftLogin{
-        width:50%;
-        padding-top: 20px;
-    }
-    .dumbledoreSpeech{
-        transform: scaleX(-1);
-    }
-    .instructions{
-        height:400px;
-    }
-
-    .right{
-        display: flex;
-        justify-items: center;
-        width:50%;
-    }
-    .loginForm {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        color: white;
-        margin-top: 100%;
-        margin-left: 10%;
-    }
-
-    .input{
-        flex-basis:100%;
-        height: 50px;
-        width:300px;
-        font-size: 36px;
-        background: #e6a7f1;
-    }
-    #login-in-button{
-        flex-basis:50%;
-        margin-top: -50%;
-        background-color:#53bb87;
-        /* background-color:#48ae94; */
-        /* font-size: 24px;
-        height: 50px;
-        width: 50px;
-    }
-
-    .input:hover{
-        background: #4bb459;
-        cursor: pointer;
-        border: none;
-    }
-    #login-in-button:hover{
-        background: #4bb459;
-    }
-
-    body {
-        background-image: url('/deathly-hallows-wallpapers-24.jpg');
-    }
-
-}  */
 
 @media only screen and (min-width:0px) and (max-width: 1199px) and (orientation:portrait){
     img.header{
@@ -216,7 +157,6 @@
         margin-left:1vw;
     }
     .dumbledoreSpeech img{
-        /* margin-left: 5%; */
         transform: scaleX(-1);
         height:70%;
         width:70%;
