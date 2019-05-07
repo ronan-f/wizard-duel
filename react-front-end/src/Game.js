@@ -55,7 +55,7 @@ class Game extends Component {
   chooseSpell = (spell) => {
     this.setState({currentSpell: spell, spellDirection: 'castSpells'}, () => {
       this.endPlayerTurn();
-    })
+    });
   }
 
   updateTurn = () => {
@@ -73,7 +73,7 @@ class Game extends Component {
         console.log('YOU LOST!');
       }
       this.takeDamage(currentSpell.power);
-      console.log("CURRENT SPEEEEELLL", currentSpell)
+
     }
     this.setState({spellDirection:'castSpellsReverse', currentSpell: currentSpell});
     this.updateTurn();
@@ -88,15 +88,17 @@ class Game extends Component {
   }
 
   endPlayerTurn = () => {
+    const { name, power } = this.state.currentSpell;
     if (this.state.myTurn) {
-      if (this.state.currentSpell.name === 'Protego') {
-        this.boostDefence(this.state.currentSpell.power);
+      if (name === 'Protego') {
+        this.boostDefence(power);
         this.socket.emit('defence', JSON.stringify(this.state));
       } else {
         this.socket.emit('attack', JSON.stringify(this.state));
       }
       this.updateTurn();
-      this.socket.emit('notification', JSON.stringify({ notification: { user: this.props.state.currentUser, spell: this.state.currentSpell}}));
+      // console.log('user', this.props.state.currentUser, 'spell', this.state.currentSpell)
+      // this.socket.emit('notification', JSON.stringify({ notification: { user: this.props.state.currentUser, spell: this.state.currentSpell.name}}));
     }
   }
 
@@ -105,7 +107,6 @@ class Game extends Component {
   }
 
     render() {
-      console.log('animation', this.state.currentSpell.animation)
       const { notifications, myCharacter } =  this.props.state
       return (
         <div className="App">
@@ -116,7 +117,7 @@ class Game extends Component {
             </div>
             <div className='spells-in-game'>
               <SpellAnimation currentSpell={this.state.currentSpell.animation} spellDirection={this.state.spellDirection} />
-              <h1 className='waiting'>{!this.state.opponentChar ? <img alt='loading' src={'/Loading.gif'}></img> : ''}</h1>
+              <h1 className='waiting'>{!this.state.opponentChar ? <img alt='loading' src={'/Loading.gif'}></img> : null}</h1>
             </div>
             <div className='my-opponent-in-game'>
               < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.right_image : ''} />
@@ -127,17 +128,17 @@ class Game extends Component {
                 <div>
                     <input value="1" type="radio" name="radio-group" id="test" onClick={this.choosePosition}>
                     </input>
-                    <label for="test" className="radio-label">🧙‍♀️ Cast spell to postion 1 </label>
+                    <label htmlFor="test" className="radio-label">🧙‍♀️ Cast spell to postion 1 </label>
                 </div>
                 <div>
                     <input value="2" type="radio" name="radio-group" id="test2" onClick={this.choosePosition}>
                     </input>
-                    <label for="test2" className="radio-label">🧙‍♂️ Cast spell to postion 2</label>
+                    <label htmlFor="test2" className="radio-label">🧙‍♂️ Cast spell to postion 2</label>
                 </div>
                 <div>
                     <input value="3" type="radio" name="radio-group" id="test3" onClick={this.choosePosition}>
                     </input>
-                    <label for="test3" className="radio-label">🧙‍♀️ Cast spell to postion 3</label>
+                    <label htmlFor="test3" className="radio-label">🧙‍♀️ Cast spell to postion 3</label>
                 </div>
             </radiogroup>
           </div>

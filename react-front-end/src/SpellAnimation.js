@@ -3,13 +3,17 @@ import React, { Component } from 'react';
 
 
 class SpellAnimation extends Component {
-    render() {
+    render() { if(this.props.currentSpell){
         return(
-          <div className={this.props.spellDirection}>
-          {/* className={this.props.spellDirection} */}
-              <img src={this.props.currentSpell} alt='myspell'/>
-          </div>
+            <div className={this.props.spellDirection}>
+                <img src={this.props.currentSpell} alt='myspell'/>
+            </div>
+          )
+    } else {
+        return (
+            <div></div>
         )
+    }
     }
 }
 
