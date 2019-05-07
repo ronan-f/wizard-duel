@@ -93,7 +93,7 @@ class Game extends Component {
       } else {
         this.socket.emit('attack', JSON.stringify(this.state));
       }
-      // this.updateTurn();
+      this.updateTurn();
       this.socket.emit('notification', JSON.stringify({ notification: { user: this.props.state.currentUser, spell: this.state.currentSpell}}));
     }
   }
@@ -113,7 +113,7 @@ class Game extends Component {
             </div>
             <div className='spells-in-game'>
               <SpellAnimation currentSpell={this.state.currentSpell} />
-              <h1 className='waiting'>{!this.state.opponentChar ? 'Waiting for player..' : ''}</h1>
+              <h1 className='waiting'>{!this.state.opponentChar ? <img alt='loading' src={'/Loading.gif'}></img> : ''}</h1>
             </div>
             <div className='my-opponent-in-game'>
               < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.right_image : ''} />
