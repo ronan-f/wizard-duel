@@ -73,8 +73,17 @@ td .spellName{
 }
 
 .castSpells{
+  position:relative;
   width: 130%;
   height: 400px;
+}
+
+.castSpellsReverse{
+  position:relative;
+  width: 130%;
+  height: 400px;
+  left:-30%;
+  transform: scaleX(-1);
 }
 
 .my-opponent-in-game{

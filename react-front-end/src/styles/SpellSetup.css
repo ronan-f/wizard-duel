@@ -1,15 +1,15 @@
 .spellSetup {
-    /* display: flex; */
-    /* justify-content: first baseline; */
-    height: 50vmin;
-    /* width: 100%; */
     display: flex;
     flex-wrap: wrap;
-    color:white;
+    color:pink;
+    height: 500px;
+}
+
+.spellSetup > #text{
+height: 400px;
 }
 
 h1 {
-    /* width: 100%; */
     margin-top:2%;
     margin-bottom:2%;
     text-align: center;
@@ -106,7 +106,6 @@ h5{
     flex-direction: row-reverse;
     width: 100%;
     padding-top: 2%;
-    /* columns: 2; */
     font-size:40px;
 }
 
@@ -144,9 +143,7 @@ h5{
     position:center;
     padding:4px 1.5em;
 }
-/* h4{
-    display:none;
-} */
+
 h3{
    font-size:24px;
 }
@@ -167,6 +164,12 @@ p{
     justify-content: space-between;
     margin: 0 5%;
     width: 100%;
+}
+
+.spell-selection{
+    display:flex;
+    flex-direction:column;
+    height:100%;
 }
 
 

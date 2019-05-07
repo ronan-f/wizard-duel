@@ -44,21 +44,21 @@ class SpellSetup extends Component {
     }
 
     render() {
+        const filteredSpells = this.props.state.spells.filter(spell => spell.unlock_level
+            <= 3)
 
-        const spellArray = this.props.state.spells.filter(spell => spell.unlock_level === 1).map((spell) => {
+        const spellArray = filteredSpells.map((spell) => {
             return(
-                <React.Fragment>
-                    <AvailableSpell
-                        key={Math.random()}
-                        id={spell.id}
-                        name={spell.name}
-                        description={spell.description}
-                        cast_limit={spell.cast_limit}
-                        cost={spell.cost}
-                        turns={spell.turns}
-                        selectSpell={this.selectSpell}
-                    />
-                </React.Fragment>
+                <AvailableSpell
+                    key={Math.random()}
+                    id={spell.id}
+                    name={spell.name}
+                    description={spell.description}
+                    cast_limit={spell.cast_limit}
+                    cost={spell.cost}
+                    turns={spell.turns}
+                    selectSpell={this.selectSpell}
+                />
             );
         });
 
