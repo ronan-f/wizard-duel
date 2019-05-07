@@ -22,7 +22,8 @@ class Game extends Component {
       currentSpell: '',
       attackPosition: null,
       gameOver: false,
-      currentUsers: 0
+      currentUsers: 0,
+      spellDirection: 'castSpells'
     }
   }
 
@@ -55,7 +56,10 @@ class Game extends Component {
     })
   }
   chooseSpell = (spell) => {
-    this.setState({currentSpell: spell})
+    // this.setState({spellDirection: 'castSpells'})
+    this.setState({currentSpell: spell}, () => {
+      this.endPlayerTurn();
+    })
   }
 
   updateTurn = () => {
@@ -73,7 +77,9 @@ class Game extends Component {
         console.log('YOU LOST!');
       }
       this.takeDamage(currentSpell.power);
+      console.log("CURRENT SPEEEEELLL", currentSpell)
     }
+    this.setState({spellDirection:'castSpellsReverse', currentSpell: currentSpell});
     this.updateTurn();
   }
 
@@ -140,7 +146,8 @@ class Game extends Component {
           </div>
         <h1>{this.state.gameOver ?<NavLink to='/setup'>GAME OVER!! Click to play again!</NavLink>: ""}</h1>
           <div className='infoBar'>
-            < PlayerSpellList chooseSpell={this.chooseSpell} userSpells={this.props.state.mySpells}/>
+            < PlayerSpellList chooseSpell={this.chooseSpell} userSpells={this.props.state.mySpells}
+             endPlayerTurn={this.endPlayerTurn}/>
             < NotificationBar notifications={notifications} />
           </div>
 
