@@ -1,11 +1,13 @@
-@media only screen and (min-width:320px) and (max-width:767px){
+@media only screen and (min-width:320px) and (max-width:767px) and (orientation:landscape){
 
     .login{
         display:flex;
         flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
     }
     .leftLogin{
-        width:100%;
+        width:100vw;
         padding-top: 20px;
     }
     .dumbledoreSpeech{
@@ -18,28 +20,26 @@
     .right{
         display: flex;
         justify-items: center;
-        width:100%;
+        flex-direction: column;
+        width:80vw;
     }
     .loginForm {
         display: flex;
         flex-wrap: wrap;
         color: white;
-        /* margin-top: 100%; */
-        margin-left: 10%;
+        width: 80vw;
     }
 
     .input{
-        /* flex-basis:100%; */
         height: 50px;
-        width:80%;
+        width:80vw;
         font-size: 36px;
-        background: #e6a7f1;
+        background: white;
     }
     #login-in-button{
-        flex-basis:82%;
         background-color:#aa6cb8;
         font-size: 24px;
-        height: 50px;
+        width: 80vw;
     }
     .input:hover{
         background: #4bb459;
