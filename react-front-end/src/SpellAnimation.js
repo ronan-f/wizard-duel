@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 class SpellAnimation extends Component {
     render() {
         return(
-          <div className='spellAnimationDiv'>
+          <div className={this.props.spellDirection}>
           {/* className={this.props.spellDirection} */}
               <img src={this.props.currentSpell} alt='myspell'/>
           </div>

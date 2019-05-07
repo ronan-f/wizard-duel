@@ -8,9 +8,6 @@ import SpellAnimation from './SpellAnimation.js'
 import socketIOClient from "socket.io-client";
 import { NavLink } from 'react-router-dom'
 
-
-
-
 class Game extends Component {
   constructor(props) {
     super(props)
@@ -23,7 +20,7 @@ class Game extends Component {
       attackPosition: null,
       gameOver: false,
       currentUsers: 0,
-      spellDirection: 'castSpells'
+      spellDirection: 'spellAnimationDiv'
     }
   }
 
@@ -56,8 +53,7 @@ class Game extends Component {
     })
   }
   chooseSpell = (spell) => {
-    // this.setState({spellDirection: 'castSpells'})
-    this.setState({currentSpell: spell}, () => {
+    this.setState({currentSpell: spell, spellDirection: 'castSpells'}, () => {
       this.endPlayerTurn();
     })
   }
@@ -109,6 +105,7 @@ class Game extends Component {
   }
 
     render() {
+      console.log('animation', this.state.currentSpell.animation)
       const { notifications, myCharacter } =  this.props.state
       return (
         <div className="App">
@@ -118,7 +115,7 @@ class Game extends Component {
               <h1>Remaining Health:{this.state.myDefence}</h1>
             </div>
             <div className='spells-in-game'>
-              <SpellAnimation currentSpell={this.state.currentSpell} />
+              <SpellAnimation currentSpell={this.state.currentSpell.animation} spellDirection={this.state.spellDirection} />
               <h1 className='waiting'>{!this.state.opponentChar ? <img alt='loading' src={'/Loading.gif'}></img> : ''}</h1>
             </div>
             <div className='my-opponent-in-game'>
@@ -150,7 +147,6 @@ class Game extends Component {
              endPlayerTurn={this.endPlayerTurn}/>
             < NotificationBar notifications={notifications} />
           </div>
-
 
           <div>
             <h1>{ this.props.state.message }</h1>

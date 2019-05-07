@@ -50,7 +50,7 @@ class SpellSetup extends Component {
         const spellArray = filteredSpells.map((spell) => {
             return(
                 <AvailableSpell
-                    key={Math.random()}
+                    key={spell.id}
                     id={spell.id}
                     name={spell.name}
                     description={spell.description}

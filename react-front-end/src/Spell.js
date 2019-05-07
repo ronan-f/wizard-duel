@@ -3,7 +3,7 @@ import './styles/spellList.css'
 
 class Spell extends Component {
     render() {
-        const {  spellObj, name, description, power, limit } = this.props;
+        const {  spellObj, name, power } = this.props;
         return (
             <div className='spellsTable'>
                 <button className='spellChoiceBtn' onClick={() =>{
