@@ -48,6 +48,7 @@ class Game extends Component {
 
   endGame = () => {
     this.setState({ gameOver: true });
+    this.props.endGame(this.props.state.currentUser)
   }
 
   choosePosition = (e) => {
@@ -165,7 +166,7 @@ class Game extends Component {
             < PlayerSpellList chooseSpell={this.chooseSpell} userSpells={this.props.state.mySpells}
              endPlayerTurn={this.endPlayerTurn}/>
           </div>
-        </div>
+         </div>
 
       );
     }

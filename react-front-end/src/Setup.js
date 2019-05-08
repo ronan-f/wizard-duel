@@ -32,7 +32,7 @@ class Setup extends Component {
             this.props.state.myCharacter ? (<Redirect to="/spell_setup"/>) :
             <React.Fragment>
                 <div id='flipMe'><p>Please orient me to landscape!</p></div>
-                <h1 id='textInfo'> {this.props.state.currentUser} choose your army!!!</h1>
+                <h1 id='textInfo'> {this.props.state.currentUser.username} choose your army!!!</h1>
                 <div className='character-container'>
                     <div className='left-wizard-selection'>
                         <div className='left-wizard-selection' onClick={() => this.props.chooseWizard(this.lightWizardObj)}>

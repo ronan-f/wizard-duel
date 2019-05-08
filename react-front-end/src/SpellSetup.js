@@ -11,8 +11,13 @@ class SpellSetup extends Component {
         this.state = {
             playerMana: 1000000,
             playerPosition: 2,
-            chosenSpells: []
+            chosenSpells: [],
+            playerLevel: 0
         }
+    }
+
+    componentDidMount() {
+        this.setState({ playerLevel: Math.floor(this.props.state.currentUser.experience_points / 100)});
     }
 
     choosePosition = (e) => {
@@ -45,7 +50,7 @@ class SpellSetup extends Component {
 
     render() {
         const filteredSpells = this.props.state.spells.filter(spell => spell.unlock_level
-            !== 1)
+            <= this.state.playerLevel)
 
         const spellArray = filteredSpells.map((spell) => {
             return(

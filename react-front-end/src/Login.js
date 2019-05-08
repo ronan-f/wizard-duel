@@ -12,11 +12,11 @@ class Login extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.newUser(this.state.user)
+        this.props.newUser(this.state.user);
     }
     render() {
         return (
-        this.props.state.currentUser ? (<Redirect to="/setup"/>) :
+        this.props.state.currentUser.username ? (<Redirect to="/setup"/>) :
             <div className='login'>
             <div id='flipMe'><p>Please orient me to landscape!</p></div>
                 <div className='leftLogin'>
