@@ -32,20 +32,20 @@ class Setup extends Component {
             this.props.state.myCharacter ? (<Redirect to="/spell_setup"/>) :
             <React.Fragment>
                 <div id='flipMe'><p>Please orient me to landscape!</p></div>
-                <h1 className='textInfo'> {this.props.state.currentUser} choose your army!!!</h1>
+                <h1 id='textInfo'> {this.props.state.currentUser} choose your army!!!</h1>
                 <div className='character-container'>
                     <div className='left-wizard-selection'>
                         <div className='left-wizard-selection' onClick={() => this.props.chooseWizard(this.lightWizardObj)}>
                         <h1 className='armyName'>Dumbledore's Army</h1>
                         <OpponentCharacter charImg={this.lightWizardObj.left_image}/>
-                        <h1 className='WizardName'>{this.lightWizardObj.name}</h1>
+                        <h1 id='WizardName'>{this.lightWizardObj.name}</h1>
                         </div>
                     </div>
                     <div className='right-wizard-selection' >
                         <div className='right-wizard-selection' onClick={() => this.props.chooseWizard(this.darkWizardObj)}>
                         <h1 className='armyName'>Death Eater</h1>
                         <OpponentCharacter charImg={this.darkWizardObj.right_image}/>
-                        <h1 className='WizardName'>{this.darkWizardObj.name}</h1>
+                        <h1 id='WizardName'>{this.darkWizardObj.name}</h1>
                         </div>
                     </div>
                 </div>

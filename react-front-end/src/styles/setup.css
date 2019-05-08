@@ -56,6 +56,12 @@
     .opponentDiv{
         height:300px;
     }
+    #WizardName{
+        display:none;
+        text-justify: center;
+        color:white;
+        position:center;
+    }
 
     .armyName{
         width:100%;
@@ -139,9 +145,26 @@
         display: flex;
         justify-content: space-around;
     }
-    .textInfo {
+    .left-wizard-selection .myChar:hover{
+        cursor: pointer;
+        background-image: radial-gradient(rgb(144, 196, 144), #437420, rgb(5, 40, 10));
+        border-radius: 50%;
+        padding: 80px;
+    }
+
+    .right-wizard-selection .myChar:hover{
+        cursor: pointer;
+        background-image: radial-gradient(red, black, black);
+        border-radius: 50%;
+        padding: 80px;
+    }
+
+    #textInfo {
+        width: 100%;
+        height:30px;
+        font-size:72px;
         padding-top: 2%;
-        padding-bottom: 2%;
+        padding-bottom: 10%;
         color: white;
     }
     .charBtn {
@@ -149,7 +172,6 @@
         justify-content: space-around;
     }
     .opponentDiv{
-        /* padding-top: 2%; */
         height:300px;
     }
     .left{
@@ -165,5 +187,9 @@
         font-size: 24px;
         margin: 0;
         padding: 10px;
+    }
+    h1.armyName{
+        font-size:40px;
+        letter-spacing: 10px;
     }
 }

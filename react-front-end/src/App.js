@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   chooseSpell = (spell) => {
-    this.setState({currentSpell: spell})
+    this.setState({myCurrentSpell: spell})
   }
 
   chooseWizard = (wizard) => {

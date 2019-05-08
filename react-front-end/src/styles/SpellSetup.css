@@ -530,7 +530,7 @@
     }
 
     .spell-selection {
-        margin-top: 5%;
+        margin-top: 6%;
         width: 100%;
         max-height: 500px;
         margin-right: 5%;
@@ -567,6 +567,10 @@
         height: 1.5%;
     }
 
+    #spellContainer:hover div{
+        cursor: pointer;
+        background-color: #4aa28a;
+    }
     .castinfo{
         margin-right:-40px;
     }
@@ -608,7 +612,9 @@
         background: rgba(57, 149, 128, 0.7);
         margin-top: 20px;
         margin-left: -5%;
-
+    }
+    .purchased-spells div div:hover{
+        background:rgb(250, 55, 55);
     }
     .spellArray{
         display:flex;
@@ -626,14 +632,14 @@
     }
 
     .dot {
-        height: 25px;
+        /* height: 25px; */
         width: 280px;
         background-color: rgb(28, 189, 28);
         border-radius: 50%;
         font-size: 1.5em;
         text-align: center;
         padding:0 10px;
-        margin-right:8%;
+        margin-right:5.7%;
         font-weight:bold;
     }
 

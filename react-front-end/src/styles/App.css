@@ -273,7 +273,7 @@
     height: 40vmin;
     pointer-events: none;
   }
-  
+
   .App-header {
     min-height: 100vh;
     display: flex;
@@ -283,11 +283,11 @@
     font-size: calc(10px + 2vmin);
     color: white;
   }
-  
+
   .App-link {
     color: #61dafb;
   }
-  
+
   @keyframes App-logo-spin {
     from {
       transform: rotate(0deg);
@@ -296,32 +296,33 @@
       transform: rotate(360deg);
     }
   }
-  
+
   .infoBar {
     display: flex;
     justify-content: space-evenly;
-    margin: 5%;
+    margin-top: 5%;
+    width:100vw;
   }
-  
+
   .characterSection {
     display: flex;
     justify-content: space-between;
     width: 100%vw;
     padding: 0 5%;
   }
-  
+
   .health {
     font-size: 30px;
     font-weight: 900;
     border-style: solid;
     padding: 3%;
   }
-  
+
   td .spellName{
     color:white;
     font-size: 72px;
   }
-  
+
   .spellsTable{
     display:flex;
     width: 700px;
@@ -330,40 +331,50 @@
     column-count: 3;
     padding-top:0;
   }
-  
+
   .spells-in-game{
     width:100%;
     height: 500px;
   }
-  
+
   .castSpells{
     position:relative;
     width: 130%;
     height: 400px;
   }
-  
+
   .castSpellsReverse{
     position:relative;
     width: 130%;
     height: 400px;
     left:-30%;
-    transform: scaleX(-1);
   }
-  
+
   .my-opponent-in-game{
     z-index:-1;
   }
-  
+
   div.radio-pillbox2{
    width:95vw;
    position:center;
    padding:0;
   }
-  
-  
+
   .spellAnimationLimit{
     position:relative;
     width: 130%;
     height: 500px;
+    left:-30%;
+  }
+  .mySpellDirection{
+    width:130%;
+    padding-left:30%;
+  }
+  #gameOver{
+    font-weight: bold;
+    color:#bf649a;
+  }
+  .waiting img{
+    width:100%;
   }
 }
