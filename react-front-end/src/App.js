@@ -57,7 +57,7 @@ class App extends Component {
         this.addNewUser(user);
       };
       this.setState({
-        wizards, spells, currentUser: { username: user, id: 0}
+        wizards, spells, currentUser: { username: user, id: 0, experience_points:100}
       }, () => {
         this.fetchUsers();
       })

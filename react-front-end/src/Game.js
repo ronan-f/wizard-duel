@@ -31,7 +31,7 @@ class Game extends Component {
   }
 
   componentDidMount(){
-    this.socket = socketIOClient('http://192.168.88.107:5000/');
+    this.socket = socketIOClient('http://10.2.123.120:5000/');
     this.socket.on('updateCharacter', this.setOpponentChar);
     this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)));
     this.socket.on('attack', this.opponentCast);
@@ -127,7 +127,7 @@ class Game extends Component {
           <div className='characterSection'>
             <div className='my-character-in-game'>
               < MyCharacter characterInfo={myCharacter} />
-              <h1>Remaining Protection:{this.state.myDefence}</h1>
+              <h1> {this.state.myDefence > 0 ? `Remaining Protection: ${this.state.myDefence}` : `Defence broken!` }</h1>
             </div>
             <div className='spells-in-game'>
               <SpellAnimation myCurrentSpell={this.state.myCurrentSpell.animation} oppCurrentSpell={this.state.oppCurrentSpell.rightAnimation} round={this.state.round} spellDirection={this.state.spellDirection}/>

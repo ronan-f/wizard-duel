@@ -1,4 +1,4 @@
-@media only screen and (min-width:320px) and (max-width:812px) and (orientation:landscape){
+/* @media only screen and (min-width:320px) and (max-width:812px) and (orientation:landscape){
   .App {
     text-align: center;
     width: 100vw;
@@ -74,9 +74,9 @@
     width: 130%;
     height: 500px;
   }
-}
+} */
 
-@media only screen and (min-width:813px) and (max-width:1023px) and (orientation:landscape){
+/* @media only screen and (min-width:813px) and (max-width:1023px) and (orientation:landscape){
   .App {
     text-align: center;
     width: 100vw;
@@ -152,9 +152,9 @@
     width: 130%;
     height: 500px;
   }
-}
+} */
 
-@media only screen and (min-width:1024px)and (max-width:1999) and (orientation:landscape){
+/* @media only screen and (min-width:1024px)and (max-width:1999) and (orientation:landscape){
   .App {
     text-align: center;
     width: 100vw;
@@ -259,7 +259,7 @@
     width: 130%;
     height: 500px;
   }
-}
+} */
 
 @media only screen and (min-width:1200px){
   .App {
@@ -367,7 +367,8 @@
     left:-30%;
   }
   .mySpellDirection{
-    width:130%;
+    /* position:relative; */
+    width:170%;
     padding-left:30%;
   }
   #gameOver{

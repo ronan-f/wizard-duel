@@ -9,16 +9,18 @@ class SpellSetup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            playerMana: 1000000,
+            playerMana: 5,
             playerPosition: 2,
             chosenSpells: [],
-            playerLevel: 0
+            playerLevel: 1
         }
     }
 
     componentDidMount() {
-        this.setState({ playerLevel: Math.floor(this.props.state.currentUser.experience_points / 100)});
-    }
+        this.setState({
+            playerLevel: Math.floor(this.props.state.currentUser.experience_points / 100),
+            playerMana:((Math.floor(this.props.state.currentUser.experience_points / 100) * 5))
+    })}
 
     choosePosition = (e) => {
         let numberified = Number(e.target.value);
@@ -49,8 +51,9 @@ class SpellSetup extends Component {
     }
 
     render() {
-        const filteredSpells = this.props.state.spells.filter(spell => spell.unlock_level
-            <= this.state.playerLevel)
+        const filteredSpells = this.state.playerLevel < 11 ? this.props.state.spells.filter(spell => (spell.unlock_level
+            >= this.state.playerLevel - 2) && (spell.unlock_level <= this.state.playerLevel)) : this.props.state.spells
+
 
         const spellArray = filteredSpells.map((spell) => {
             return(
@@ -75,6 +78,7 @@ class SpellSetup extends Component {
             )
         })
 
+
         return <div className='spellSetup'>
             <div className="wizard-info">
                     <h2>{this.props.state.myCharacter.name}'s Spells</h2>
@@ -88,7 +92,7 @@ class SpellSetup extends Component {
             </container>
             <div className='bottom'>
                 <container  className="purchased-spells">
-                    <h1>Your battle spells!</h1>
+                    <h1>Your level {this.state.playerLevel} battle spells!</h1>
                     <div className='spellArray'>
                         {chosenSpellArray}
                     </div>

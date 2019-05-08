@@ -1,4 +1,4 @@
-@media only screen and (min-width:320px) and (max-width:812px) and (orientation:landscape){
+/* @media only screen and (min-width:320px) and (max-width:812px) and (orientation:landscape){
   .characterSelection{
     display:flex;
     justify-content: space-evenly;
@@ -27,20 +27,9 @@
     height:  33vmin;
     width: 33vmin;
   }
+} */
 
-  /* .myChar {
-    height: 200px;
-    width: 200px;
-    margin-top: 25%;
-  } */
-
-  /* .opponentChar {
-    height: 200px;
-    width: 200px;
-  } */
-}
-
-@media only screen and (min-width:813px) and (max-width:1023px) and (orientation:landscape){
+/* @media only screen and (min-width:813px) and (max-width:1023px) and (orientation:landscape){
   .characterSelection{
     display:flex;
     justify-content: space-evenly;
@@ -69,20 +58,9 @@
     height:  33vmin;
     width: 33vmin;
   }
+} */
 
-  /* .myChar {
-    height: 200px;
-    width: 200px;
-    margin-top: 25%;
-  } */
-
-  /* .opponentChar {
-    height: 200px;
-    width: 200px;
-  } */
-}
-
-@media only screen and (min-width:1024px) and (max-width:1999px) and (orientation:landscape){
+/* @media only screen and (min-width:1024px) and (max-width:1999px) and (orientation:landscape){
   .characterSelection{
     display:flex;
     justify-content: space-around;
@@ -123,7 +101,7 @@
     height: 200px;
     width: 200px;
   }
-}
+} */
 
 @media only screen and (min-width:1200px) and (max-width:20000px){
   .characterSelection{
