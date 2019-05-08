@@ -310,6 +310,9 @@
     width: 100%vw;
     padding: 0 5%;
   }
+  .opponentDiv{
+    background-image: url(/frog_card_template.png);
+  }
 
   .health {
     font-size: 30px;
@@ -367,7 +370,6 @@
     left:-30%;
   }
   .mySpellDirection{
-    /* position:relative; */
     width:170%;
     padding-left:30%;
   }
@@ -375,7 +377,11 @@
     font-weight: bold;
     color:#bf649a;
   }
-  .waiting img{
+
+  .spells-in-game h1.waiting img{
     width:100%;
+    margin-top: -50vh;
+    margin-left: 15vw;
+    position: center;
   }
 }
