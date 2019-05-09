@@ -16,7 +16,7 @@ class Game extends Component {
     super(props)
     this.state = {
       opponentChar: null,
-      myDefence: 10,
+      myDefence: 25,
       opponentImg: '',
       myTurn: false,
       myCurrentSpell: '',
@@ -31,7 +31,7 @@ class Game extends Component {
   }
 
   componentDidMount(){
-    this.socket = socketIOClient('http://10.2.123.120:5000/');
+    this.socket = socketIOClient('http://192.168.88.107:5000/');
     this.socket.on('updateCharacter', this.setOpponentChar);
     this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)));
     this.socket.on('attack', this.opponentCast);
@@ -140,7 +140,7 @@ class Game extends Component {
           <div className="radio-pillbox2">
             <radiogroup>
               <div>
-                  <label for="test3" className="radio-label">{this.state.myTurn ? 'Your turn, please aim your spell:' : (this.state.opponentHit ? 'You have hit your opponent!': '')}</label>
+                  <label for="test3" className="radio-label">{this.state.myTurn ? 'Your turn, please aim your spell:' : (this.state.opponentHit ? <b id='HIT'>'You have hit your opponent!'</b> : '')}</label>
               </div>
               <div>
                   <input value="1" type="radio" name="radio-group" id="test" onClick={this.choosePosition}>
