@@ -1,8 +1,8 @@
 .spellSetup {
     display: flex;
     flex-wrap: wrap;
-    color:pink;
-    height: 500px;
+    color:white;
+    height: 100%;
 }
 
 .spellSetup > #text{
@@ -21,10 +21,11 @@ h1 {
 .spell-selection {
     margin-top: 5%;
     width: 100%;
-    height: 100%;
+    max-height: 500px;
     margin-right: 5%;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
     overflow: scroll;
     overscroll-behavior-y: scroll;
 }
@@ -164,12 +165,6 @@ p{
     justify-content: space-between;
     margin: 0 5%;
     width: 100%;
-}
-
-.spell-selection{
-    display:flex;
-    flex-direction:column;
-    height:100%;
 }
 
 

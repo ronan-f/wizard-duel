@@ -123,7 +123,7 @@ class Game extends Component {
               < OpponentCharacter charImg={this.state.opponentChar ? this.state.opponentChar.right_image : ''} />
             </div>
           </div>
-          <div className="radio-pillbox">
+          <div className="radio-pillbox2">
             <radiogroup>
                 <div>
                     <input value="1" type="radio" name="radio-group" id="test" onClick={this.choosePosition}>
@@ -149,12 +149,13 @@ class Game extends Component {
             < NotificationBar notifications={notifications} />
           </div>
 
-          <div>
-            <h1>{ this.props.state.message }</h1>
+
+          {/* <div>
+            <h1>{ this.props.state.message }, {this.state.myTurn ? 'Your turn' : 'Enemy Turn'}</h1>
             <button onClick={this.fetchData} >
               {this.state.myTurn ? 'Your turn' : 'Enemy Turn'}
             </button>
-          </div>
+          </div> */}
         </div>
 
       );
