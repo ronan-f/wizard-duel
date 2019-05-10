@@ -16,7 +16,7 @@ class Game extends Component {
     super(props)
     this.state = {
       opponentChar: null,
-      myDefence: 25,
+      myDefence: 10,
       opponentImg: '',
       myTurn: false,
       myCurrentSpell: '',
