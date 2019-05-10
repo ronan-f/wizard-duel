@@ -31,7 +31,7 @@ class Game extends Component {
   }
 
   componentDidMount(){
-    this.socket = socketIOClient('http://192.168.88.107:5000/');
+    this.socket = socketIOClient('http://10.0.0.85:5000/');
     this.socket.on('updateCharacter', this.setOpponentChar);
     this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)));
     this.socket.on('attack', this.opponentCast);
