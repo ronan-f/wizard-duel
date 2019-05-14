@@ -1,6 +1,6 @@
 # Wizard Duels
 A player vs player, 90's style, pixel art game for the Harry Potter fans out there! SAP built with React, node.js, express, socket.io, and styled with css.
-
+![still](https://github.com/kcdporter/wizard-duel/blob/master/react-front-end/public/readme_vid/Still.png?raw=true)
 Contributors: [ronan-f](https://github.com/ronan-f), [SebastianPez](https://github.com/SebastianPez)
 
 
@@ -8,6 +8,10 @@ Contributors: [ronan-f](https://github.com/ronan-f), [SebastianPez](https://gith
 ### **Shout-out**
 -----------------
 We started out with a boilerplate from @garrettgsb's [react-express-boilerplate](https://github.com/garrettgsb/react-express-boilerplate), which is a bootleg of @NimaBoscarino's [React Rails Boilerplate](https://github.com/NimaBoscarino/react-rails-boilerplate). We at Wizards Duel greatly appreciate their jump off for this project. 🙌
+
+
+![hagrid](https://github.com/kcdporter/wizard-duel/blob/master/react-front-end/public/character_gifs/left_view/hagrid.gif?raw=true)
+![ron](https://github.com/kcdporter/wizard-duel/blob/master/react-front-end/public/character_gifs/right_view/ron.gif?raw=true)
 
 
 ### Running Wizards Duels
@@ -31,8 +35,11 @@ Please note that this game is a fan made project, and not associated with Warner
 ### Second Player Connection
 -------
 Your friend (or foe, who are we to judge?) will have to type `http://<b>Your Local Ip </b>:3000` into their search engine in order to connect to the duel.
+![duel](https://github.com/kcdporter/wizard-duel/blob/master/react-front-end/public/readme_vid/duel.png?raw=true)
 
 
 ### Will there be more?
 -----
-There are plans in the works to add more characters and spells. If you have someone you want to see, shoot me a message 😊
+There are plans in the works to add more characters and spells. If you have someone you want to see, shoot me a message 😊 Otherwise, enjoy our game! 
+
+![dumbledore](https://github.com/kcdporter/wizard-duel/blob/master/react-front-end/public/character_gifs/DI.gif?raw=true)
