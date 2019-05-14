@@ -128,8 +128,6 @@ class SpellSetup extends Component {
                 </div>
             </div>
         </div>
-
-
     }
 }
 

@@ -1,7 +1,7 @@
 # Wizard Duels
 A player vs player, 90's style, pixel art game for the Harry Potter fans out there! SAP built with React, node.js, express, socket.io, and styled with css.
 
-Contributors: @ronan-f, @SebastianPez
+Contributors: [ronan-f](https://github.com/ronan-f), [SebastianPez](https://github.com/SebastianPez)
 
 
 

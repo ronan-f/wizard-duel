@@ -49,11 +49,9 @@ class App extends Component {
   }
 
   newUser = (user) => {
-    console.log('new user hit', user);
     this.fetchData()
     .then(([{ data: { wizards: { wizards } } }, { data: { spells: { spells } } }]) => {
       if (this.checkIfUserExists(user)) {
-        console.log("It;s true");
         this.addNewUser(user);
       };
       this.setState({
@@ -66,23 +64,34 @@ class App extends Component {
 
   setUsers = (users) => {
     this.setState({
-      usersFromDb: users 
-    }); 
+      usersFromDb: users
+    });
   }
-  
+
+  fetchSpells() {
+    return axios.get('/api/spells')
+  }
+
+  fetchWizards() {
+    return axios.get('/api/wizards')
+  }
+
+  fetchData = () => {
+    return Promise.all([this.fetchWizards(), this.fetchSpells()]);
+  }
+
   fetchUsers() {
     return axios.get('/api/users')
-    .then(usersFromDb => this.setUsers(usersFromDb.data.usersFromDb));
+      .then(usersFromDb => this.setUsers(usersFromDb.data.usersFromDb));
   }
 
   checkIfUserExists = (username) => {
     for (let user of this.state.usersFromDb.users) {
       if (user.username === username) {
         return false
-      } 
+      }
     }
     return true
-  
   }
 
   addNewUser = (user) => {
@@ -96,7 +105,6 @@ class App extends Component {
   }
 
   endGame = (user) => {
-    console.log(user);
     axios({
       method: "post",
       url: "/api/endgame",
@@ -125,17 +133,6 @@ class App extends Component {
   }
 
 
-  fetchSpells() {
-    return axios.get('/api/spells')
-  }
-
-  fetchWizards() {
-    return axios.get('/api/wizards')
-  }
-
-  fetchData = () => {
-    return Promise.all([this.fetchWizards(), this.fetchSpells()]);
-  }
 
   render() {
     this.updateCurrentUser();

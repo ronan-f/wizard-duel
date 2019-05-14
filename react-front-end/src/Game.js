@@ -31,7 +31,7 @@ class Game extends Component {
   }
 
   componentDidMount(){
-    this.socket = socketIOClient('http://10.0.0.85:5000/');
+    this.socket = socketIOClient('http://localhost:5000/');
     this.socket.on('updateCharacter', this.setOpponentChar);
     this.socket.on('newUser', this.socket.emit('updateCharacter', JSON.stringify(this.props.state.myCharacter)));
     this.socket.on('attack', this.opponentCast);
@@ -64,7 +64,6 @@ class Game extends Component {
     })
   }
   chooseSpell = (spell) => {
-    // this.setState({spellDirection: 'castSpells'})
     this.setState({oppCurrentSpell:'', myCurrentSpell: spell, spellDirection:'spellAnimationLimit'}, () => {
       this.endPlayerTurn();
     })
@@ -167,7 +166,6 @@ class Game extends Component {
              endPlayerTurn={this.endPlayerTurn}/>
           </div>
          </div>
-
       );
     }
   }

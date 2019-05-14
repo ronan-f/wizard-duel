@@ -9,9 +9,7 @@ class NotificationBar extends Component {
         const notificationArray = this.props.notifications.map(msg => {
             return(
                 <div>
-                    <Notification
-                        message={msg}
-                    />
+                    <Notification message={msg}/>
                 </div>
             )
         })
