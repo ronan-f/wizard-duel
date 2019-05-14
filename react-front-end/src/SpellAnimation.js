@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-// import './styles/SpellAnimation.css';
-
 
 class SpellAnimation extends Component {
-    render() { if(this.props.currentSpell){
-        return(
-            <div className={this.props.spellDirection}>
-                <img className='spellAnimationLimit' src={this.props.currentSpell} alt='myspell'/>
-            </div>
-          )
-    } else {
-        return (
-            <div></div>
-        )
-    }
+
+    render() {
+        const {myCurrentSpell, oppCurrentSpell, spellDirection} = this.props;
+        if (!myCurrentSpell && oppCurrentSpell){
+                return (<div className={spellDirection}><img className='spellAnimationLimit' src={oppCurrentSpell} alt='myspell'/></div>)
+        }
+        if (myCurrentSpell){
+            if(oppCurrentSpell){
+            return (<div className={spellDirection}><img className='spellAnimationLimit' src={oppCurrentSpell} alt='myspell'/></div>)
+            } else {
+            return (<div className='mySpellDirection'><img className='spellAnimationLimit' src={myCurrentSpell} alt='myspell'/></div>)
+        }
+        } else {
+            return (<div></div>)
+        }
     }
 }
 

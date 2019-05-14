@@ -4,7 +4,7 @@ class AvailableSpell extends Component {
   render() {
     const { id , name, description, cast_limit, cost, turns } = this.props;
     return (
-      <div onClick={() => this.props.selectSpell(id)}>
+      <container id='spellContainer' onClick={() => this.props.selectSpell(id)}>
         <div>
           {/* <h4>{id}</h4> */}
           <h3>{name}</h3>
@@ -18,7 +18,7 @@ class AvailableSpell extends Component {
           <p>{description}</p>
           <h5 className="circle-display2">Limit:{cast_limit}</h5>
         </div>
-      </div>
+      </container>
     )
   }
 }

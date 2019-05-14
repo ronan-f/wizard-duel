@@ -8,7 +8,6 @@ class Setup extends Component {
     lightWizardObj = null;
     darkWizardObj = null;
 
-
     randomCharacter = () => {
         const { wizards } = this.props.state
         const lightImgs = [];
@@ -20,35 +19,38 @@ class Setup extends Component {
                 lightImgs.push(wizard)
             }
         }
-        this.lightWizardObj = lightImgs[Math.floor(Math.random() * lightImgs.length)];
-        this.darkWizardObj = darkImgs[Math.floor(Math.random() * darkImgs.length)];
+        const randomWiz = Math.floor(Math.random() * lightImgs.length)
+        this.lightWizardObj = lightImgs[randomWiz];
+        this.darkWizardObj = darkImgs[randomWiz];
+    }
+
+    componentWillMount() {
+        this.randomCharacter();
     }
 
     render() {
-        this.randomCharacter();
-        // console.log(this.props.state.myCharacter)
-
+        const {chooseWizard, state} = this.props;
         return (
-            this.props.state.myCharacter ? (<Redirect to="/spell_setup"/>) :
+            state.myCharacter ? (<Redirect to="/spell_setup"/>) :
             <React.Fragment>
-                <h1 className='textInfo'> {this.props.state.currentUser} choose your army!!!</h1>
+                <div id='flipMe'><p>Please orient me to landscape!</p></div>
+                <h1 id='textInfo'> {state.currentUser.username} choose your army!!!</h1>
                 <div className='character-container'>
                     <div className='left-wizard-selection'>
-                        <div className='left-wizard-selection' onClick={() => this.props.chooseWizard(this.lightWizardObj)}>
+                        <div className='left-wizard-selection' onClick={() => chooseWizard(this.lightWizardObj)}>
                         <h1 className='armyName'>Dumbledore's Army</h1>
                         <OpponentCharacter charImg={this.lightWizardObj.left_image}/>
-                        <h1>{this.lightWizardObj.name}</h1>
+                        <h1 id='WizardName'>{this.lightWizardObj.name}</h1>
                         </div>
                     </div>
                     <div className='right-wizard-selection' >
-                        <div className='right-wizard-selection' onClick={() => this.props.chooseWizard(this.darkWizardObj)}>
+                        <div className='right-wizard-selection' onClick={() => chooseWizard(this.darkWizardObj)}>
                         <h1 className='armyName'>Death Eater</h1>
                         <OpponentCharacter charImg={this.darkWizardObj.right_image}/>
-                        <h1>{this.darkWizardObj.name}</h1>
+                        <h1 id='WizardName'>{this.darkWizardObj.name}</h1>
                         </div>
                     </div>
                 </div>
-
             </React.Fragment>
         );
     }

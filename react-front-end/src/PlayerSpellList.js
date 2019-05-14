@@ -8,6 +8,7 @@ class PlayerSpellList extends Component {
         const spellArray = this.props.userSpells.map((spell) => {
             return(
                 <Spell
+                    key={Math.random().toString()}
                     name={spell.name}
                     description={spell.description}
                     power={spell.power}

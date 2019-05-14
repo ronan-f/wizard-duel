@@ -9,11 +9,19 @@ class SpellSetup extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            playerMana: 1000000,
+            playerMana: 5,
             playerPosition: 2,
-            chosenSpells: [{animation: '/spells/right/confrigo.gif', casts: 100, affect_opponent: false, name: 'Confrigo', cost: 0, power: 2, id: 1, description: 'fiery cast dealing 2 damage to your opponent'}]
+            chosenSpells: [],
+            playerLevel: 1
         }
     }
+
+    componentDidMount() {
+        const playerLevel = Math.floor(this.props.state.currentUser.experience_points / 100);
+        this.setState({
+            playerLevel: playerLevel,
+            playerMana: playerLevel * 5
+    })}
 
     choosePosition = (e) => {
         let numberified = Number(e.target.value);
@@ -21,11 +29,13 @@ class SpellSetup extends Component {
         });
     }
     findSpell = (id) => {
-        for (let spell of this.props.state.spells) {
-            if (id === spell.id && this.state.playerMana >= spell.cost) {
-                let updatedSpells = this.state.chosenSpells;
+        const {spells} = this.props.state;
+        const {playerMana, chosenSpells} = this.state;
+        for (let spell of spells) {
+            if (id === spell.id && playerMana >= spell.cost) {
+                let updatedSpells = chosenSpells;
                 updatedSpells.push(spell);
-                this.setState({ chosenSpell: updatedSpells, playerMana: (this.state.playerMana - spell.cost) })
+                this.setState({ chosenSpell: updatedSpells, playerMana: (playerMana - spell.cost) })
             }
         }
     }
@@ -44,13 +54,17 @@ class SpellSetup extends Component {
     }
 
     render() {
-        const filteredSpells = this.props.state.spells.filter(spell => spell.unlock_level
-            < 2)
+        const {playerLevel} = this.state;
+        const {spells} = this.props.state;
+        const filteredSpells = playerLevel < 11 ?
+        spells.filter(spell => (spell.unlock_level >= playerLevel - 2) && (spell.unlock_level <= playerLevel)) :
+        spells
+
 
         const spellArray = filteredSpells.map((spell) => {
             return(
                 <AvailableSpell
-                    key={Math.random().toString()}
+                    key={spell.id.toString()}
                     id={spell.id}
                     name={spell.name}
                     description={spell.description}
@@ -64,11 +78,12 @@ class SpellSetup extends Component {
 
         const chosenSpellArray = this.state.chosenSpells.map((spell) => {
             return(
-                <div key={Math.random().toString()}onClick={() => this.removeSpell(spell.id)}>
+                <div key={Math.random().toString()} onClick={() => this.removeSpell(spell.id)}>
                     {spell.name}
                 </div>
             )
         })
+
 
         return <div className='spellSetup'>
             <div className="wizard-info">
@@ -76,25 +91,25 @@ class SpellSetup extends Component {
                     <h1>Arm Yourself!</h1>
                     <span className="dot">Remaining Mana:{this.state.playerMana}</span>
                 </div>
-            <div className="spell-selection">
+            <container className="spell-selection">
                 <div className="available-spells">
                     {spellArray}
                 </div>
-            </div>
+            </container>
             <div className='bottom'>
-                <div  className="purchased-spells">
-                    <h1>Your battle spells!</h1>
+                <container  className="purchased-spells">
+                    <h1>Your level {this.state.playerLevel} battle spells!</h1>
                     <div className='spellArray'>
                         {chosenSpellArray}
                     </div>
-                </div>
+                </container>
                 <div className='bottom-right'>
-                <div className='playerPositioning'>
+                <container className='playerPositioning'>
                     <div>
                         <h3>Choose your wizard's position</h3>
                     </div>
                     <div className="radio-pillbox">
-                        <div>
+                        <radiogroup>
                             <div>
                                 <input value="1" type="radio" name="radio-group" id="test" onClick={this.choosePosition}>
                                 </input>
@@ -110,12 +125,12 @@ class SpellSetup extends Component {
                                 </input>
                                 <label htmlFor="test3" className="radio-label">3</label>
                             </div>
-                        </div>
+                        </radiogroup>
                     </div>
                     <div className='StartGame'>
                     <NavLink className='dot2' to='/game' id='start' onClick={() => this.props.setPlayerOptions(this.state.chosenSpells, this.state.playerPosition)}>Start Game!</NavLink>
                 </div>
-                </div>
+                </container>
                 </div>
             </div>
         </div>
